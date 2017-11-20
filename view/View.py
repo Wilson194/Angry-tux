@@ -58,11 +58,9 @@ class View(IObserver, IVisitor):
     def _visit_missile(self, missile: Missile):
         x = missile.position.x_position
         y = missile.position.y_position
-        angle = missile.movement_angle - 76
-
         tux_img = self.__imageLoader.get_tux()
-        img, rect = rot_center(tux_img, (x + 59, y + 75), angle)
-        self.__screen.blit(img, rect)
+
+        self.__screen.blit(tux_img, (x, y))
 
 
     def _visit_enemy(self, enemy: Enemy):

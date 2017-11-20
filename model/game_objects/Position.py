@@ -27,15 +27,13 @@ class Position:
 
 
     def move(self, angle: float, distance: float):
-        # norm_x, norm_y = self.__compute_normalize_translation(angle, distance)
-        #
-        # x, y = self.__denormalize_translation(norm_x, norm_y, angle)
+        norm_x, norm_y = self.__compute_normalize_translation(angle, distance)
 
-        self.__x_position = round(math.cos(angle * math.pi / 180) * distance + self.__x_position)
-        self.__y_position = round(math.sin(angle * math.pi / 180) * distance + self.__y_position)
+        x, y = self.__denormalize_translation(norm_x, norm_y, -angle)
 
-        # self.__x_position += x
-        # self.__y_position += y
+
+        self.__x_position += x
+        self.__y_position += y
 
 
     def __denormalize_translation(self, x: float, y: float, origin_angle: float):

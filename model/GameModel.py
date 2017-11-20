@@ -1,3 +1,4 @@
+from controller.Commands.Command import Command
 from model.Commands import Commands
 from model.Observering.ChangeManager import ChangeManager
 from model.Singleton import SingletonInheritance
@@ -26,12 +27,19 @@ class GameModel(SingletonInheritance):
 
 
     def __model_builder(self):
+        """
+        Create initial object in model
+        """
         self.__cannon = Cannon(Position(0, 150))
 
         self.__change_notify()
 
 
     def get_all_game_objects(self) -> list:
+        """
+        Return all game objects
+        :return:
+        """
         game_objects = []
 
         game_objects.extend(self.__missiles)
@@ -43,40 +51,78 @@ class GameModel(SingletonInheritance):
 
 
     def __change_notify(self):
+        """
+        Notify about model change (Observer)
+        :return:
+        """
         self.__changeManager.notify(self)
 
 
-    def __move_missiles(self):
+    def __move_missiles(self) -> bool:
+        """
+        Move all missiles
+        :return: True if some missile move, False otherwise
+        """
         for missile in self.__missiles:
             missile.move(self.gravity)
 
+        if self.__missiles:
+            return True
+        else:
+            return False
+
 
     def tick(self):
+        """
+        One moment in time, do all movements
+        :return:
+        """
         changed = self.__commands.do_commands()
 
-        self.__move_missiles()
+        changed = self.__move_missiles() or changed
         if changed:
             self.__change_notify()
 
 
-    def add_command(self, command):
+    def add_command(self, command: Command):
+        """
+        Add command to Commands class
+        :param command:
+        :return:
+        """
         self.__commands.add_command(command)
 
 
-    def move_cannon(self, angle, distance):
+    def move_cannon(self, angle: float, distance: float):
+        """
+        Move cannon
+        :param angle: angle of movement (90,-90)
+        :param distance: distance of move
+        """
         self.__cannon.position.move(angle, distance)
         self.__change_notify()
 
 
-    def angle_cannon(self, angle):
+    def angle_cannon(self, angle: float):
+        """
+        Angle cannon
+        :param angle: angle of move (+ up, - down)
+        :return:
+        """
         self.__cannon.angle(angle)
 
 
     def shoot(self):
+        """
+        Shoot missile from cannon
+        """
         missiles = self.__cannon.shoot()
 
         self.__missiles.extend(missiles)
 
 
     def change_cannon_state(self):
+        """
+        Change cannon state
+        """
         self.__cannon.change_state()

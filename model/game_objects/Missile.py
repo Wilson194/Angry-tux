@@ -10,6 +10,7 @@ class Missile(GameObject):
         self.__speed = speed
         self.__movement_angle = movement_angle
         self.__strategy = strategy
+        self.__position = position
 
 
     def collision_distance(self):
@@ -17,7 +18,7 @@ class Missile(GameObject):
 
 
     def move(self, gravity: float):
-        self.__strategy.move(gravity, self.__position)
+        self.__strategy.move(gravity, self.__position, self.__movement_angle, self.__speed)
 
 
     def accept(self, visitor):
