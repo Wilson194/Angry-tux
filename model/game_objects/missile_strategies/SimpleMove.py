@@ -1,9 +1,8 @@
-from model.game_objects.Position import Position
+from model.game_objects.Missile import Missile
 from .MissileStrategy import MissileStrategy
 
 
 class SimpleMove(MissileStrategy):
-    def move(self, gravity: float, position: Position, movement_angle: float, speed: float):
-        position.move(movement_angle, 1.)
-
-        return position
+    def move(self, missile: Missile, gravity: float):
+        missile.movement_angle = missile.movement_angle if missile.movement_angle < -90 else missile.movement_angle - gravity/120
+        missile.position.move(missile.movement_angle, 1.)

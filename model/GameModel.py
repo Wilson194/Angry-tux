@@ -72,6 +72,10 @@ class GameModel(SingletonInheritance):
             return False
 
 
+    def __garbage_collector(self):
+        self.__missiles = [missile for missile in self.__missiles if not missile.state.delete]
+
+
     def tick(self):
         """
         One moment in time, do all movements
@@ -80,6 +84,9 @@ class GameModel(SingletonInheritance):
         changed = self.__commands.do_commands()
 
         changed = self.__move_missiles() or changed
+
+        self.__garbage_collector()
+
         if changed:
             self.__change_notify()
 

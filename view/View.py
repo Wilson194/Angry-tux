@@ -1,5 +1,7 @@
 import pygame
 import os
+
+from config.Config import Config
 from model.GameModel import GameModel
 from model.Observering.ChangeManager import ChangeManager
 from model.Observering.IObserver import IObserver
@@ -44,7 +46,7 @@ class View(IObserver, IVisitor):
         result = pygame.init()
         pygame.font.init()
         pygame.display.set_caption('Angry tux')
-        self.__screen = pygame.display.set_mode((800, 600))
+        self.__screen = pygame.display.set_mode(Config()['windows_size'])
         self.__clock = pygame.time.Clock()
         self.__screen.fill((255, 255, 255))
 

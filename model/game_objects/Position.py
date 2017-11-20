@@ -1,5 +1,7 @@
 import math
 
+from config.Config import Config
+
 
 class Position:
     """
@@ -31,7 +33,6 @@ class Position:
 
         x, y = self.__denormalize_translation(norm_x, norm_y, -angle)
 
-
         self.__x_position += x
         self.__y_position += y
 
@@ -60,6 +61,18 @@ class Position:
 
     def __normalize_angle(self, angle: float) -> float:
         return 180 - abs(angle) if abs(angle) > 180 else abs(angle)
+
+
+    def out_of_window(self):
+        x, y = Config()['windows_size']
+
+        if self.__x_position < 0 or self.__y_position < 0:
+            return True
+
+        if self.__x_position > x or self.__y_position > y:
+            return True
+
+        return False
 
 
     def __repr__(self):

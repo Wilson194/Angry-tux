@@ -1,3 +1,5 @@
+from model.game_objects.missile_states.Flying import Flying
+from model.game_objects.missile_states.OutOfGame import OutOfGame
 from .GameObject import GameObject
 from .Position import Position
 from .missile_strategies.MissileStrategy import MissileStrategy
@@ -11,6 +13,7 @@ class Missile(GameObject):
         self.__movement_angle = movement_angle
         self.__strategy = strategy
         self.__position = position
+        self.__state = Flying()
 
 
     def collision_distance(self):
@@ -18,7 +21,12 @@ class Missile(GameObject):
 
 
     def move(self, gravity: float):
-        self.__strategy.move(gravity, self.__position, self.__movement_angle, self.__speed)
+        self.__strategy.move(self, gravity)
+
+        out = self.__position.out_of_window()
+
+        if out:
+            self.__state = OutOfGame()
 
 
     def accept(self, visitor):
@@ -26,8 +34,18 @@ class Missile(GameObject):
 
 
     @property
+    def state(self):
+        return self.__state
+
+
+    @property
     def movement_angle(self):
         return self.__movement_angle
+
+
+    @movement_angle.setter
+    def movement_angle(self, angle):
+        self.__movement_angle = angle
 
 
     def __str__(self):
