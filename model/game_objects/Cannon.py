@@ -12,7 +12,7 @@ class Cannon(GameObject):
         super().__init__(position)
         self.__shooting_angle = INITIAL_SHOOTING_ANGLE
         self.__strength = INITIAL_STRENGTH
-        self.__state = SingleShoot()
+        self.__state = SingleShoot(self)
 
 
     @property
@@ -35,8 +35,8 @@ class Cannon(GameObject):
         self.__strength = value
 
 
-    def shoot(self):
-        self.__state.shoot()
+    def shoot(self) -> tuple:
+        return self.__state.shoot()
 
 
     @property
@@ -55,10 +55,10 @@ class Cannon(GameObject):
 
     def change_state(self):
         if isinstance(self.__state, SingleShoot):
-            self.__state = DoubleShoot()
+            self.__state = DoubleShoot(self)
 
         elif isinstance(self.__state, DoubleShoot):
-            self.__state = SingleShoot
+            self.__state = SingleShoot(self)
 
 
     def __str__(self):

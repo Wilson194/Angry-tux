@@ -15,20 +15,20 @@ class GameModel(SingletonInheritance):
         self.__obstacles = []
         self.__commands = Commands()
 
-        self.__cannon = None
+        self.__cannon = Cannon(Position(0, 0))
 
         self.__score = 0
         self.running = False
 
         self.__changeManager = ChangeManager()
 
-        self.model_builder()
+        self.__model_builder()
 
 
-    def model_builder(self):
+    def __model_builder(self):
         self.__cannon = Cannon(Position(0, 150))
 
-        self.change_notify()
+        self.__change_notify()
 
 
     def get_all_game_objects(self) -> list:
@@ -42,15 +42,21 @@ class GameModel(SingletonInheritance):
         return game_objects
 
 
-    def change_notify(self):
+    def __change_notify(self):
         self.__changeManager.notify(self)
+
+
+    def __move_missiles(self):
+        for missile in self.__missiles:
+            missile.move(self.gravity)
 
 
     def tick(self):
         changed = self.__commands.do_commands()
 
+        self.__move_missiles()
         if changed:
-            self.change_notify()
+            self.__change_notify()
 
 
     def add_command(self, command):
@@ -59,7 +65,7 @@ class GameModel(SingletonInheritance):
 
     def move_cannon(self, angle, distance):
         self.__cannon.position.move(angle, distance)
-        self.change_notify()
+        self.__change_notify()
 
 
     def angle_cannon(self, angle):
@@ -67,4 +73,10 @@ class GameModel(SingletonInheritance):
 
 
     def shoot(self):
-        pass
+        missiles = self.__cannon.shoot()
+
+        self.__missiles.extend(missiles)
+
+
+    def change_cannon_state(self):
+        self.__cannon.change_state()

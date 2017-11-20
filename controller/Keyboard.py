@@ -6,6 +6,7 @@ from controller.Commands.CannonAngleDownCommand import CannonAngleDownCommand
 from controller.Commands.CannonAngleUpCommand import CannonAngleUpCommand
 from controller.Commands.ShootCommand import ShootCommand
 from controller.Commands.QuitCommand import QuitCommand
+from .Commands.ChangeCannonStateCommand import ChangeCannonStateCommand
 from model.Singleton import Singleton
 from proxy.Proxy import Proxy
 
@@ -53,7 +54,7 @@ class Keyboard(metaclass=Singleton):
 
                 # Change state - C
                 if event.key == pygame.K_c:
-                    command = ChangeStateCommand(self.__proxy)
+                    command = ChangeCannonStateCommand(self.__proxy)
 
             if command is not None:
                 self._add_command(command)

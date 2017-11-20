@@ -25,7 +25,7 @@ class ImageLoader:
 
 
     def get_tux(self):
-        size = (80, 150)
+        size = (40, 75)
         image_name = 'tux.png'
 
         return self.__return_cached('tux', image_name, size)
