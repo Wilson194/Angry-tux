@@ -48,5 +48,10 @@ class Missile(GameObject):
         self.__movement_angle = angle
 
 
+    @property
+    def speed(self):
+        return self.__speed
+
+
     def __str__(self):
         return 'Missile'

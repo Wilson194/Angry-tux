@@ -12,6 +12,7 @@ class SingleShoot(CannonState):
         x = self.__cannon.position.x_position + 100
         y = self.__cannon.position.y_position + 27
 
+        print(self.__cannon.strength)
         missile = CreationFactory().create_missile(Position(x, y), self.__cannon.strength, self.__cannon.shooting_angle)
 
         return missile,

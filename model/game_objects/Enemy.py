@@ -1,4 +1,3 @@
-
 from .GameObject import GameObject
 from abc import ABC, abstractmethod
 
@@ -20,7 +19,7 @@ class Enemy(GameObject, ABC):
 class DumpEnemy(Enemy):
     def collision_distance(self) -> float:
         return 50.
-1
+
 
 class SmartEnemy(Enemy):
     def collision_distance(self) -> float:

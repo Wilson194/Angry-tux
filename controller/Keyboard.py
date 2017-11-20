@@ -1,6 +1,8 @@
 import pygame
 
 from controller.Commands.CannonDownCommand import CannonDownCommand
+from controller.Commands.CannonStrenghtDownCommand import CannonStrengthDownCommand
+from controller.Commands.CannonStrenghtUpCommand import CannonStrengthUpCommand
 from controller.Commands.CannonUpCommand import CannonUpCommand
 from controller.Commands.CannonAngleDownCommand import CannonAngleDownCommand
 from controller.Commands.CannonAngleUpCommand import CannonAngleUpCommand
@@ -55,6 +57,13 @@ class Keyboard(metaclass=Singleton):
                 # Change state - C
                 if event.key == pygame.K_c:
                     command = ChangeCannonStateCommand(self.__proxy)
+
+                # Cannon power up - P
+                if event.key == pygame.K_p:
+                    command = CannonStrengthUpCommand(self.__proxy)
+
+                if event.key == pygame.K_o:
+                    command = CannonStrengthDownCommand(self.__proxy)
 
             if command is not None:
                 self._add_command(command)

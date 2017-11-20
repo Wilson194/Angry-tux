@@ -3,7 +3,7 @@ from .Position import Position
 from .cannon_states.SingleShoot import SingleShoot
 from .cannon_states.DoubleShoot import DoubleShoot
 
-INITIAL_STRENGTH = 0.5
+INITIAL_STRENGTH = 5
 INITIAL_SHOOTING_ANGLE = 0
 
 
@@ -32,7 +32,8 @@ class Cannon(GameObject):
 
     @strength.setter
     def strength(self, value):
-        self.__strength = value
+        if 10 > value > 1:
+            self.__strength = value
 
 
     def shoot(self) -> tuple:
