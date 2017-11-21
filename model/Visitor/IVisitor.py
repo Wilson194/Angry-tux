@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 
 from model.game_objects.Cannon import Cannon
-from model.game_objects.Enemy import Enemy
 from model.game_objects.Missile import Missile
 from model.game_objects.Obstacle import Obstacle
+from model.game_objects.enemies.Enemy import Enemy
 
 
 class IVisitor(ABC):

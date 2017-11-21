@@ -1,5 +1,4 @@
 import pygame
-import os
 
 from config.Config import Config
 from model.GameModel import GameModel
@@ -7,9 +6,11 @@ from model.Observering.ChangeManager import ChangeManager
 from model.Observering.IObserver import IObserver
 from model.Visitor.IVisitor import IVisitor
 from model.game_objects.Cannon import Cannon
-from model.game_objects.Enemy import Enemy
 from model.game_objects.Missile import Missile
 from model.game_objects.Obstacle import Obstacle
+from model.game_objects.enemies.DumpEnemy import DumpEnemy
+from model.game_objects.enemies.Enemy import Enemy
+from model.game_objects.enemies.enemy_states.HittedState import HittedState
 from view.ImageLoader import ImageLoader
 
 
@@ -58,15 +59,23 @@ class View(IObserver, IVisitor):
 
 
     def _visit_missile(self, missile: Missile):
-        x = missile.position.x_position
-        y = missile.position.y_position
-        tux_img = self.__imageLoader.get_tux()
+        size, tux_img = self.__imageLoader.get_tux()
+        x = missile.position.x_position - size[0] / 2
+        y = missile.position.y_position - size[1] / 2
 
         self.__screen.blit(tux_img, (x, y))
 
 
     def _visit_enemy(self, enemy: Enemy):
-        pass
+        if isinstance(enemy, DumpEnemy):
+            if isinstance(enemy.state, HittedState):
+                size, img = self.__imageLoader.get_blue_dead()
+            else:
+                size, img = self.__imageLoader.get_vista()
+
+        x = enemy.position.x_position - size[0] / 2
+        y = enemy.position.y_position - size[1] / 2
+        self.__screen.blit(img, (x, y))
 
 
     def _visit_cannon(self, canon: Cannon):
@@ -74,11 +83,11 @@ class View(IObserver, IVisitor):
         y = canon.position.y_position
         angle = canon.shooting_angle
 
-        cannon_img = self.__imageLoader.get_cannon()
+        size, cannon_img = self.__imageLoader.get_cannon()
         img, rect = rot_center(cannon_img, (x + 59, y + 75), angle)
         self.__screen.blit(img, rect)
 
-        wheel_img = self.__imageLoader.get_wheel()
+        size, wheel_img = self.__imageLoader.get_wheel()
         self.__screen.blit(wheel_img, (x + 40, y + 65))
 
 

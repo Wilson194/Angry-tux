@@ -75,5 +75,9 @@ class Position:
         return False
 
 
+    def to_rect(self):
+        return self.x_position, self.y_position
+
+
     def __repr__(self):
         return '<Position> x: {}, y: {}'.format(self.__x_position, self.__y_position)

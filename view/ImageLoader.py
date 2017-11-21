@@ -28,18 +28,32 @@ class ImageLoader:
         size = (30, 30)
         image_name = 'tux_circle.png'
 
-        return self.__return_cached('tux', image_name, size)
+        return size, self.__return_cached('tux', image_name, size)
 
 
     def get_cannon(self):
         size = (125, 125)
         image_name = 'cannon.png'
 
-        return self.__return_cached('cannon', image_name, size)
+        return size, self.__return_cached('cannon', image_name, size)
 
 
     def get_wheel(self):
         size = (40, 40)
         image_name = 'wheel.png'
 
-        return self.__return_cached('wheel', image_name, size)
+        return size, self.__return_cached('wheel', image_name, size)
+
+
+    def get_vista(self):
+        size = (60, 60)
+        image_name = 'vista.png'
+
+        return size, self.__return_cached('vista', image_name, size)
+
+
+    def get_blue_dead(self):
+        size = (30, 30)
+
+        image_name = 'blue_dead.jpg'
+        return size, self.__return_cached('blue_dead', image_name, size)

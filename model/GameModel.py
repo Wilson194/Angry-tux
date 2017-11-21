@@ -1,9 +1,11 @@
 from controller.Commands.Command import Command
 from model.Commands import Commands
+from model.ObjectsPackage import ObjectsPackage
 from model.Observering.ChangeManager import ChangeManager
 from model.Singleton import SingletonInheritance
 from model.game_objects.Cannon import Cannon
 from model.game_objects.Position import Position
+from model.game_objects.enemies.DumpEnemy import DumpEnemy
 
 
 class GameModel(SingletonInheritance):
@@ -11,9 +13,7 @@ class GameModel(SingletonInheritance):
 
 
     def __init__(self):
-        self.__missiles = []
-        self.__enemies = []
-        self.__obstacles = []
+        self.__objects = ObjectsPackage()
         self.__commands = Commands()
 
         self.__cannon = Cannon(Position(0, 0))
@@ -32,6 +32,8 @@ class GameModel(SingletonInheritance):
         """
         self.__cannon = Cannon(Position(0, 150))
 
+        self.__objects.add_enemy(DumpEnemy(Position(400, 400)))
+
         self.__change_notify()
 
 
@@ -40,11 +42,8 @@ class GameModel(SingletonInheritance):
         Return all game objects
         :return:
         """
-        game_objects = []
+        game_objects = self.__objects.get_all_objects()
 
-        game_objects.extend(self.__missiles)
-        game_objects.extend(self.__enemies)
-        game_objects.extend(self.__obstacles)
         game_objects.append(self.__cannon)
 
         return game_objects
@@ -63,17 +62,17 @@ class GameModel(SingletonInheritance):
         Move all missiles
         :return: True if some missile move, False otherwise
         """
-        for missile in self.__missiles:
-            missile.move(self.gravity)
+        for missile in self.__objects.missiles:
+            missile.move(self.gravity, self.__objects.get_all_collidable_objects())
 
-        if self.__missiles:
+        if self.__objects.missiles:
             return True
         else:
             return False
 
 
     def __garbage_collector(self):
-        self.__missiles = [missile for missile in self.__missiles if not missile.state.delete]
+        self.__objects.missiles = [missile for missile in self.__objects.missiles if not missile.state.delete]
 
 
     def tick(self):
@@ -125,7 +124,7 @@ class GameModel(SingletonInheritance):
         """
         missiles = self.__cannon.shoot()
 
-        self.__missiles.extend(missiles)
+        self.__objects.missiles.extend(missiles)
 
 
     def change_cannon_state(self):
