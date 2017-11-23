@@ -71,8 +71,21 @@ class GameModel(SingletonInheritance):
             return False
 
 
+    def __act_enemies(self) -> bool:
+        change = False
+        for enemy in self.__objects.enemies:
+            change = change or enemy.state.move()
+
+        return change
+
+
     def __garbage_collector(self):
+        """
+        Destroy all object which is dead or out of window
+        :return:
+        """
         self.__objects.missiles = [missile for missile in self.__objects.missiles if not missile.state.delete]
+        self.__objects.enemies = [enemy for enemy in self.__objects.enemies if not enemy.state.delete]
 
 
     def tick(self):
@@ -83,6 +96,8 @@ class GameModel(SingletonInheritance):
         changed = self.__commands.do_commands()
 
         changed = self.__move_missiles() or changed
+
+        changed = self.__act_enemies() or changed
 
         self.__garbage_collector()
 

@@ -28,6 +28,9 @@ class Keyboard(metaclass=Singleton):
         Parse all keyboard events
         :return:
         """
+
+
+
         for event in pygame.event.get():
             command = None
             if event.type == pygame.QUIT:

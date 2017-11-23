@@ -66,7 +66,7 @@ class Position:
     def out_of_window(self):
         x, y = Config()['windows_size']
 
-        if self.__x_position < 0 or self.__y_position < 0:
+        if self.__x_position < 0:
             return True
 
         if self.__x_position > x or self.__y_position > y:

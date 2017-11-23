@@ -9,6 +9,11 @@ import pygame
 
 
 def run():
+    pygame.mixer.pre_init(44100, -16, 2, 512)
+    pygame.mixer.init()
+    pygame.init()
+    pygame.key.set_repeat(300, 40)
+
     controller = Keyboard()
 
     view = View()

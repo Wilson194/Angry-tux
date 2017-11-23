@@ -15,3 +15,8 @@ class EnemyState(ABC):
     @abstractmethod
     def hit(self):
         pass
+
+
+    @abstractmethod
+    def move(self) -> bool:
+        pass
