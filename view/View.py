@@ -43,8 +43,7 @@ class View(IObserver, IVisitor):
         """
         Set up the pygame graphical display and loads graphical resources.
         """
-
-        result = pygame.init()
+        # result = pygame.init()
         pygame.font.init()
         pygame.display.set_caption('Angry tux')
         self.__screen = pygame.display.set_mode(Config()['windows_size'])
