@@ -8,6 +8,7 @@ from controller.Commands.CannonAngleDownCommand import CannonAngleDownCommand
 from controller.Commands.CannonAngleUpCommand import CannonAngleUpCommand
 from controller.Commands.ShootCommand import ShootCommand
 from controller.Commands.QuitCommand import QuitCommand
+from controller.Commands.UndoCommand import UndoCommand
 from .Commands.ChangeCannonStateCommand import ChangeCannonStateCommand
 from model.Singleton import Singleton
 from proxy.Proxy import Proxy
@@ -28,8 +29,6 @@ class Keyboard(metaclass=Singleton):
         Parse all keyboard events
         :return:
         """
-
-
 
         for event in pygame.event.get():
             command = None
@@ -65,8 +64,12 @@ class Keyboard(metaclass=Singleton):
                 if event.key == pygame.K_p:
                     command = CannonStrengthUpCommand(self.__proxy)
 
+                # Cannon power down - o
                 if event.key == pygame.K_o:
                     command = CannonStrengthDownCommand(self.__proxy)
+
+                if event.key == pygame.K_u:
+                    command = UndoCommand()
 
             if command is not None:
                 self._add_command(command)

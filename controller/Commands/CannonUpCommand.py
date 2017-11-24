@@ -7,7 +7,13 @@ class CannonUpCommand(Command):
     """
 
 
+    @property
+    def create_memento(self):
+        return False
+
+
     def __init__(self, proxy):
+        super().__init__()
         self.__proxy = proxy
 
 

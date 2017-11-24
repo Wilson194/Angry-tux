@@ -7,6 +7,11 @@ class QuitCommand(Command):
     """
 
 
+    @property
+    def create_memento(self):
+        return False
+
+
     def undo(self):
         pass
 

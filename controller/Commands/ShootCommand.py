@@ -7,12 +7,18 @@ class ShootCommand(Command):
     """
 
 
+    @property
+    def create_memento(self):
+        return True
+
+
     def __init__(self, proxy):
+        super().__init__()
         self.__proxy = proxy
 
 
     def undo(self):
-        pass
+        self.__proxy.load_memento(self.memento)
 
 
     def execute(self):

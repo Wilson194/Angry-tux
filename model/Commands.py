@@ -1,3 +1,4 @@
+from controller.Commands.UndoCommand import UndoCommand
 from model import Singleton
 import queue
 
@@ -20,9 +21,10 @@ class Queue:
 
 
 class Commands:
-    def __init__(self):
+    def __init__(self, model):
         self.__queue = Queue()
         self.__stack = queue.LifoQueue()
+        self.__model = model
 
 
     def add_command(self, command):
@@ -34,6 +36,19 @@ class Commands:
         while not self.__queue.empty():
             something_happend = True
             command = self.__queue.pop()
-            command.execute()
+
+            if isinstance(command, UndoCommand):
+                if self.__stack.empty():
+                    continue
+                command = self.__stack.get_nowait()
+                command.undo()
+            else:
+                if command.create_memento:
+                    memento = self.__model.create_memento()
+                    command.memento = memento
+
+                command.execute()
+
+                self.__stack.put_nowait(command)
 
         return something_happend

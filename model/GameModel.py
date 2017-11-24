@@ -1,5 +1,6 @@
 from controller.Commands.Command import Command
 from model.Commands import Commands
+from model.Levels.LevelCreator import LevelCreator
 from model.ObjectsPackage import ObjectsPackage
 from model.Observering.ChangeManager import ChangeManager
 from model.Singleton import SingletonInheritance
@@ -11,10 +12,14 @@ from model.game_objects.enemies.DumpEnemy import DumpEnemy
 class GameModel(SingletonInheritance):
     gravity = 9.81
 
+    class Memento:
+        def __init__(self, pack):
+            self.__pack = pack
+
 
     def __init__(self):
         self.__objects = ObjectsPackage()
-        self.__commands = Commands()
+        self.__commands = Commands(self)
 
         self.__cannon = Cannon(Position(0, 0))
 
@@ -23,10 +28,8 @@ class GameModel(SingletonInheritance):
 
         self.__changeManager = ChangeManager()
 
-        self.__model_builder()
 
-
-    def __model_builder(self):
+    def model_builder(self, level_creator: LevelCreator):
         """
         Create initial object in model
         """
@@ -34,7 +37,23 @@ class GameModel(SingletonInheritance):
 
         self.__objects.add_enemy(DumpEnemy(Position(400, 400)))
 
+        self.__objects.enemies = level_creator.create_enemies()
+        self.__objects.obstacles = level_creator.create_obstacles()
+
         self.__change_notify()
+
+
+    def create_memento(self) -> Memento:
+        pack = self.__objects.create_pack()
+        memento = GameModel.Memento(pack)
+
+        return memento
+
+
+    def load_memento(self, memento: Memento) -> None:
+        pack = memento._Memento__pack
+
+        self.__objects.set_pack(pack)
 
 
     def get_all_game_objects(self) -> list:

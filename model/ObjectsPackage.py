@@ -12,12 +12,13 @@ class ObjectsPackage:
         self.__obstacles = []
 
 
-    def create_memento(self):
+    def create_pack(self):
+        print(self.__enemies)
         return pickle.dumps(vars(self))
 
 
-    def set_memento(self, memento):
-        previous_state = pickle.loads(memento)
+    def set_pack(self, pack):
+        previous_state = pickle.loads(pack)
         vars(self).clear()
         vars(self).update(previous_state)
 

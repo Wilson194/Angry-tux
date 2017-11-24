@@ -1,6 +1,7 @@
 from config.Config import Config
 from controller.Keyboard import Keyboard
 from model.GameModel import GameModel
+from model.Levels.Level1Creator import Level1Creator
 from model.abstract_facotry.CreationFactory import CreationFactory
 from model.abstract_facotry.SimpleFactory import SimpleFactory
 from proxy.Proxy import Proxy
@@ -22,6 +23,7 @@ def run():
     CreationFactory(SimpleFactory())
 
     model = GameModel()
+    model.model_builder(Level1Creator())
 
     clock = pygame.time.Clock()
     while 1:
