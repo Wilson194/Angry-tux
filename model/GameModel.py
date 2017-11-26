@@ -40,6 +40,8 @@ class GameModel(SingletonInheritance):
         self.__objects.enemies = level_creator.create_enemies()
         self.__objects.obstacles = level_creator.create_obstacles()
 
+        level_creator.music()
+
         self.__change_notify()
 
 
@@ -158,6 +160,7 @@ class GameModel(SingletonInheritance):
         """
         Shoot missile from cannon
         """
+        self.__score -= 1
         missiles = self.__cannon.shoot()
 
         self.__objects.missiles.extend(missiles)

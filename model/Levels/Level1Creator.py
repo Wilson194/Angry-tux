@@ -1,3 +1,6 @@
+import os
+import pygame
+
 from model.Levels.LevelCreator import LevelCreator
 from model.game_objects.Obstacle import Obstacle
 from model.game_objects.Position import Position
@@ -27,3 +30,9 @@ class Level1Creator(LevelCreator):
         enemies.append(MovingEnemy(Position(400, 400)))
 
         return enemies
+
+
+    def music(self):
+        file = os.path.join('resources', 'sounds', 'song1.mp3')
+        pygame.mixer.music.load(file)
+        pygame.mixer.music.play()

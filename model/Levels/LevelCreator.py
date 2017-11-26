@@ -10,3 +10,9 @@ class LevelCreator(ABC):
     @abstractmethod
     def create_obstacles(self) -> list:
         pass
+
+
+    @property
+    @abstractmethod
+    def music(self):
+        pass
