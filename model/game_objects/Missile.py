@@ -65,5 +65,10 @@ class Missile(GameObject):
         return self.__speed
 
 
+    @speed.setter
+    def speed(self, speed: float):
+        self.__speed = speed
+
+
     def __str__(self):
         return 'Missile'

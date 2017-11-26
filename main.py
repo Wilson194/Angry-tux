@@ -3,6 +3,7 @@ from controller.Keyboard import Keyboard
 from model.GameModel import GameModel
 from model.Levels.Level1Creator import Level1Creator
 from model.abstract_facotry.CreationFactory import CreationFactory
+from model.abstract_facotry.RealisticFactory import RealisticFactory
 from model.abstract_facotry.SimpleFactory import SimpleFactory
 from proxy.Proxy import Proxy
 from view.View import View
@@ -20,7 +21,7 @@ def run():
     view = View()
     view.initialize()
 
-    CreationFactory(SimpleFactory())
+    CreationFactory(RealisticFactory())
 
     model = GameModel()
     model.model_builder(Level1Creator())
