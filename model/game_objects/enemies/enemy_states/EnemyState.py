@@ -20,3 +20,9 @@ class EnemyState(ABC):
     @abstractmethod
     def move(self) -> bool:
         pass
+
+
+    @property
+    @abstractmethod
+    def collidable(self) -> bool:
+        pass

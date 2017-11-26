@@ -53,7 +53,7 @@ class ImageLoader:
 
 
     def get_blue_dead(self):
-        size = (30, 30)
+        size = (40, 40)
 
         image_name = 'blue_dead.jpg'
         return size, self.__return_cached('blue_dead', image_name, size)

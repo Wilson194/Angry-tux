@@ -26,3 +26,8 @@ class HittedState(EnemyState):
     @property
     def delete(self) -> bool:
         return False
+
+
+    @property
+    def collidable(self) -> bool:
+        return False

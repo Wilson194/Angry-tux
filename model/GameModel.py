@@ -82,7 +82,8 @@ class GameModel(SingletonInheritance):
         :return: True if some missile move, False otherwise
         """
         for missile in self.__objects.missiles:
-            missile.move(self.gravity, self.__objects.get_all_collidable_objects())
+            points = missile.move(self.gravity, self.__objects.get_all_collidable_objects())
+            self.__score += points
 
         if self.__objects.missiles:
             return True

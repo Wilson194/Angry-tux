@@ -40,5 +40,10 @@ class Obstacle(GameObject):
         self.__state = state
 
 
+    @property
+    def points(self):
+        return 0
+
+
     def __str__(self):
         return 'Obstacle'

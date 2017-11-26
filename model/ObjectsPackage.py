@@ -77,7 +77,7 @@ class ObjectsPackage:
     def get_all_collidable_objects(self):
         game_objects = []
 
-        game_objects.extend(self.__enemies)
+        game_objects.extend([enemy for enemy in self.__enemies if enemy.state.collidable])
         game_objects.extend(self.__obstacles)
 
         return game_objects

@@ -23,3 +23,8 @@ class LiveState(EnemyState):
         pygame.mixer.Channel(1).play(pygame.mixer.Sound(os.path.join('resources', 'sounds', 'blue_screen.wav')))
 
         self._enemy.state = HittedState(self._enemy)
+
+
+    @property
+    def collidable(self) -> bool:
+        return True

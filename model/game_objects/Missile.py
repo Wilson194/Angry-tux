@@ -23,6 +23,8 @@ class Missile(GameObject):
 
 
     def move(self, gravity: float, collidable_objects: list):
+        points = 0
+
         self.__strategy.move(self, gravity)
 
         out = self.__position.out_of_window()
@@ -34,6 +36,9 @@ class Missile(GameObject):
             if self.has_collided_with(obj):
                 self.__state = Collided()
                 obj.state.hit()
+                points += obj.points
+
+        return points
 
 
     def accept(self, visitor):
