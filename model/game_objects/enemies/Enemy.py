@@ -3,13 +3,11 @@ from abc import ABC, abstractmethod
 
 from model.game_objects.Position import Position
 from model.game_objects.enemies.enemy_states.EnemyState import EnemyState
-from model.game_objects.enemies.enemy_states.LiveState import LiveState
 
 
 class Enemy(GameObject, ABC):
     def __init__(self, position: Position):
         super().__init__(position)
-        self._state = LiveState(self)
 
 
     @abstractmethod

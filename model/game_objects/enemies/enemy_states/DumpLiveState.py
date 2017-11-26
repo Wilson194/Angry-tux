@@ -5,7 +5,7 @@ from model.game_objects.enemies.enemy_states.EnemyState import EnemyState
 from model.game_objects.enemies.enemy_states.HittedState import HittedState
 
 
-class LiveState(EnemyState):
+class DumpLiveState(EnemyState):
     def __init__(self, enemy):
         super().__init__(enemy)
 

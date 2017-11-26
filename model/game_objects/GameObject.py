@@ -14,6 +14,11 @@ class GameObject(IVisitable, ABC):
         return self.__position
 
 
+    @position.setter
+    def position(self, position: Position):
+        self.__position = position
+
+
     @abstractmethod
     def collision_distance(self):
         pass

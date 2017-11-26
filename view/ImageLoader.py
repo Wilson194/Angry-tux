@@ -52,6 +52,20 @@ class ImageLoader:
         return size, self.__return_cached('vista', image_name, size)
 
 
+    def get_win_10(self):
+        size = (60, 60)
+        image_name = 'windows_10.png'
+
+        return size, self.__return_cached('win10', image_name, size)
+
+
+    def get_win_98(self):
+        size = (60, 60)
+        image_name = 'windows_98.png'
+
+        return size, self.__return_cached('win98', image_name, size)
+
+
     def get_blue_dead(self):
         size = (40, 40)
 

@@ -10,6 +10,8 @@ from model.game_objects.Missile import Missile
 from model.game_objects.Obstacle import Obstacle
 from model.game_objects.enemies.DumpEnemy import DumpEnemy
 from model.game_objects.enemies.Enemy import Enemy
+from model.game_objects.enemies.MovingEnemy import MovingEnemy
+from model.game_objects.enemies.SmartEnemy import SmartEnemy
 from model.game_objects.enemies.enemy_states.HittedState import HittedState
 from view.ImageLoader import ImageLoader
 from view.ProgressBar import ProgressBar
@@ -78,11 +80,15 @@ class View(IObserver, IVisitor):
 
 
     def _visit_enemy(self, enemy: Enemy):
-        if isinstance(enemy, DumpEnemy):
-            if isinstance(enemy.state, HittedState):
-                size, img = self.__imageLoader.get_blue_dead()
-            else:
+        if isinstance(enemy.state, HittedState):
+            size, img = self.__imageLoader.get_blue_dead()
+        else:
+            if isinstance(enemy, DumpEnemy):
                 size, img = self.__imageLoader.get_vista()
+            if isinstance(enemy, SmartEnemy):
+                size, img = self.__imageLoader.get_win_10()
+            if isinstance(enemy, MovingEnemy):
+                size, img = self.__imageLoader.get_win_98()
 
         x = enemy.position.x_position - size[0] / 2
         y = enemy.position.y_position - size[1] / 2

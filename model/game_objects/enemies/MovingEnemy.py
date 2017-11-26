@@ -1,18 +1,18 @@
 from model.game_objects.Position import Position
 from model.game_objects.enemies.Enemy import Enemy
-from model.game_objects.enemies.enemy_states.DumpLiveState import DumpLiveState
+from model.game_objects.enemies.enemy_states.MovingLiveState import MovingLiveState
 
 
-class DumpEnemy(Enemy):
+class MovingEnemy(Enemy):
     def __init__(self, position: Position):
         super().__init__(position)
-        self._state = DumpLiveState(self)
+        self._state = MovingLiveState(self)
 
 
     def collision_distance(self) -> float:
-        return 40
+        return 50.
 
 
     @property
     def points(self):
-        return 10
+        return 30
