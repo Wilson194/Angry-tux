@@ -172,3 +172,8 @@ class GameModel(SingletonInheritance):
         self.__cannon.strength += strength
 
         self.__change_notify()
+
+
+    @property
+    def score(self):
+        return self.__score

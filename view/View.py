@@ -31,12 +31,16 @@ class View(IObserver, IVisitor):
 
         self.__change_manager.register(self.__model, self)
 
+        self.__font = pygame.font.SysFont("comicsansms", 20)
+        self.__big_font = pygame.font.SysFont("comicsansms", 30)
+
 
     def object_change(self, subject):
         all_objects = self.__model.get_all_game_objects()
         self.__screen.fill((255, 255, 255))
         for obj in all_objects:
             obj.accept(self)
+        self._draw_score(self.__model.score)
         pygame.display.flip()
 
 
@@ -94,8 +98,13 @@ class View(IObserver, IVisitor):
 
 
     def _draw_strength_bar(self, strength):
-        p = ProgressBar(self.__screen, 200, 10, 150, 20, 'Strength', pygame.font.SysFont("comicsansms", 20))
+        p = ProgressBar(self.__screen, 200, 10, 150, 20, 'Strength', self.__font)
         p.update(strength)
+
+
+    def _draw_score(self, score):
+        text_surface = self.__big_font.render('Score: {}'.format(score), False, (0, 0, 0))
+        self.__screen.blit(text_surface, (400, 10))
 
 
 def rot_center(image, rect, angle):
