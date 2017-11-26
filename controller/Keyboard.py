@@ -6,6 +6,8 @@ from controller.Commands.CannonStrenghtUpCommand import CannonStrengthUpCommand
 from controller.Commands.CannonUpCommand import CannonUpCommand
 from controller.Commands.CannonAngleDownCommand import CannonAngleDownCommand
 from controller.Commands.CannonAngleUpCommand import CannonAngleUpCommand
+from controller.Commands.GravityDownCommand import GravityDownCommand
+from controller.Commands.GravityUpCommand import GravityUpCommand
 from controller.Commands.ShootCommand import ShootCommand
 from controller.Commands.QuitCommand import QuitCommand
 from controller.Commands.UndoCommand import UndoCommand
@@ -71,6 +73,13 @@ class Keyboard(metaclass=Singleton):
                 # Undo command
                 if event.key == pygame.K_u:
                     command = UndoCommand()
+
+                # Gravity up
+                if event.key == pygame.K_g:
+                    command = GravityUpCommand(self.__proxy)
+
+                if event.key == pygame.K_f:
+                    command = GravityDownCommand(self.__proxy)
 
             if command is not None:
                 self._add_command(command)

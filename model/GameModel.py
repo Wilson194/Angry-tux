@@ -10,7 +10,7 @@ from model.game_objects.enemies.DumpEnemy import DumpEnemy
 
 
 class GameModel(SingletonInheritance):
-    gravity = 9.81
+    GRAVITY = 9.81
 
     class Memento:
         def __init__(self, pack):
@@ -25,6 +25,8 @@ class GameModel(SingletonInheritance):
 
         self.__score = 0
         self.running = False
+
+        self.__gravity = self.GRAVITY
 
         self.__changeManager = ChangeManager()
 
@@ -187,3 +189,18 @@ class GameModel(SingletonInheritance):
     @property
     def cannon(self):
         return self.__cannon
+
+
+    @property
+    def gravity(self):
+        return self.__gravity
+
+
+    def change_gravity(self, gravity: float):
+        self.__gravity += gravity
+
+        if self.__gravity < 2:
+            self.__gravity = 2
+
+        if self.__gravity > 20:
+            self.__gravity = 20
