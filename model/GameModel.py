@@ -178,3 +178,8 @@ class GameModel(SingletonInheritance):
     @property
     def score(self):
         return self.__score
+
+
+    @property
+    def cannon(self):
+        return self.__cannon

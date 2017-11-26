@@ -16,3 +16,10 @@ class DoubleShoot(CannonState):
         missile2 = CreationFactory().create_missile(Position(x, y), self.__cannon.strength, self.__cannon.shooting_angle + 20)
 
         return missile1, missile2
+
+
+    def __eq__(self, other):
+        if type(other) is str and other.lower() == 'doubleshoot':
+            return True
+
+        return False

@@ -40,7 +40,10 @@ class View(IObserver, IVisitor):
         self.__screen.fill((255, 255, 255))
         for obj in all_objects:
             obj.accept(self)
+
         self._draw_score(self.__model.score)
+        self._draw_shoot_state(self.__model.cannon.state)
+
         pygame.display.flip()
 
 
@@ -111,8 +114,18 @@ class View(IObserver, IVisitor):
         self.__screen.blit(text_surface, (400, 10))
 
 
-    def _shoot_state(self, state):
-        pass
+    def _draw_shoot_state(self, state):
+        size, tux_img = self.__imageLoader.get_tux_small()
+        text_surface = self.__big_font.render('Shoot: ', False, (0, 0, 0))
+
+        self.__screen.blit(text_surface, (600, 10))
+
+        if state == 'SingleShoot':
+            self.__screen.blit(tux_img, (670, 10))
+
+        if state == 'DoubleShoot':
+            self.__screen.blit(tux_img, (670, 10))
+            self.__screen.blit(tux_img, (690, 10))
 
 
 def rot_center(image, rect, angle):

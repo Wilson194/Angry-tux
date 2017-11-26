@@ -50,6 +50,11 @@ class Cannon(GameObject):
         return 0
 
 
+    @property
+    def state(self):
+        return self.__state
+
+
     def accept(self, visitor):
         visitor.visit(self)
 

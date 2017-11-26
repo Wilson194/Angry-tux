@@ -18,3 +18,10 @@ class SingleShoot(CannonState):
         missile = CreationFactory().create_missile(Position(x, y), self.__cannon.strength, self.__cannon.shooting_angle)
 
         return missile,
+
+
+    def __eq__(self, other):
+        if type(other) is str and other.lower() == 'singleshoot':
+            return True
+
+        return False

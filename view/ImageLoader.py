@@ -64,3 +64,10 @@ class ImageLoader:
         image_name = 'firewall.png'
 
         return size, self.__return_cached('firewall', image_name, size)
+
+
+    def get_tux_small(self):
+        size = (20, 20)
+        image_name = 'tux_circle.png'
+
+        return size, self.__return_cached('tux_small', image_name, size)
