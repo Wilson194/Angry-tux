@@ -1,3 +1,4 @@
+from config.Config import Config
 from .GameObject import GameObject
 from .Position import Position
 from .cannon_states.SingleShoot import SingleShoot
@@ -32,7 +33,11 @@ class Cannon(GameObject):
 
     @strength.setter
     def strength(self, value):
-        if 10 > value > 1:
+        if value < Config()['min_strength']:
+            self.__strength = Config()['min_strength']
+        elif value > Config()['max_strength']:
+            self.__strength = Config()['max_strength']
+        else:
             self.__strength = value
 
 

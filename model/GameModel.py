@@ -170,3 +170,5 @@ class GameModel(SingletonInheritance):
 
     def change_strength(self, strength: float):
         self.__cannon.strength += strength
+
+        self.__change_notify()

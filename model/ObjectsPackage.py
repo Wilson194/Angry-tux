@@ -13,7 +13,6 @@ class ObjectsPackage:
 
 
     def create_pack(self):
-        print(self.__enemies)
         return pickle.dumps(vars(self))
 
 

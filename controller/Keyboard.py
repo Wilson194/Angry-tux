@@ -68,6 +68,7 @@ class Keyboard(metaclass=Singleton):
                 if event.key == pygame.K_o:
                     command = CannonStrengthDownCommand(self.__proxy)
 
+                # Undo command
                 if event.key == pygame.K_u:
                     command = UndoCommand()
 

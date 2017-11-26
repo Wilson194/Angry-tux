@@ -12,6 +12,7 @@ from model.game_objects.enemies.DumpEnemy import DumpEnemy
 from model.game_objects.enemies.Enemy import Enemy
 from model.game_objects.enemies.enemy_states.HittedState import HittedState
 from view.ImageLoader import ImageLoader
+from view.ProgressBar import ProgressBar
 
 
 class View(IObserver, IVisitor):
@@ -88,6 +89,13 @@ class View(IObserver, IVisitor):
 
         size, wheel_img = self.__imageLoader.get_wheel()
         self.__screen.blit(wheel_img, (x + 40, y + 65))
+
+        self._draw_strength_bar(canon.strength)
+
+
+    def _draw_strength_bar(self, strength):
+        p = ProgressBar(self.__screen, 200, 10, 150, 20, 'Strength', pygame.font.SysFont("comicsansms", 20))
+        p.update(strength)
 
 
 def rot_center(image, rect, angle):
