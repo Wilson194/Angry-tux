@@ -1,4 +1,4 @@
-
+from model.game_objects.obstacle_states.NewState import NewState
 from .GameObject import GameObject
 from .Position import Position
 
@@ -10,6 +10,7 @@ class Obstacle(GameObject):
         super().__init__(position)
 
         self.__hit_points = INITIAL_HIT_POINTS
+        self.__state = NewState(self)
 
 
     def got_hit(self):
@@ -22,6 +23,21 @@ class Obstacle(GameObject):
 
     def accept(self, visitor):
         visitor.visit(self)
+
+
+    @property
+    def hit_points(self):
+        return self.__hit_points
+
+
+    @property
+    def state(self):
+        return self.__state
+
+
+    @state.setter
+    def state(self, state):
+        self.__state = state
 
 
     def __str__(self):

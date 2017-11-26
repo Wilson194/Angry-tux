@@ -57,3 +57,10 @@ class ImageLoader:
 
         image_name = 'blue_dead.jpg'
         return size, self.__return_cached('blue_dead', image_name, size)
+
+
+    def get_wall(self):
+        size = (60, 60)
+        image_name = 'firewall.png'
+
+        return size, self.__return_cached('firewall', image_name, size)

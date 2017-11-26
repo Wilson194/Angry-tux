@@ -105,6 +105,7 @@ class GameModel(SingletonInheritance):
         """
         self.__objects.missiles = [missile for missile in self.__objects.missiles if not missile.state.delete]
         self.__objects.enemies = [enemy for enemy in self.__objects.enemies if not enemy.state.delete]
+        self.__objects.obstacles = [obstacle for obstacle in self.__objects.obstacles if not obstacle.state.delete]
 
 
     def tick(self):

@@ -59,7 +59,11 @@ class View(IObserver, IVisitor):
 
 
     def _visit_obstacle(self, obstacle: Obstacle):
-        pass
+        size, tux_img = self.__imageLoader.get_wall()
+        x = obstacle.position.x_position - size[0] / 2
+        y = obstacle.position.y_position - size[1] / 2
+
+        self.__screen.blit(tux_img, (x, y))
 
 
     def _visit_missile(self, missile: Missile):
@@ -105,6 +109,10 @@ class View(IObserver, IVisitor):
     def _draw_score(self, score):
         text_surface = self.__big_font.render('Score: {}'.format(score), False, (0, 0, 0))
         self.__screen.blit(text_surface, (400, 10))
+
+
+    def _shoot_state(self, state):
+        pass
 
 
 def rot_center(image, rect, angle):
