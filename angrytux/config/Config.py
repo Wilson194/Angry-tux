@@ -1,10 +1,12 @@
+import os
+
 from angrytux.model.Singleton import Singleton
 
 
 class Config(metaclass=Singleton):
     def __init__(self):
         variables = {}
-        exec(open('angrytux/config/Data.py', 'r').read(), variables)
+        exec(open(os.path.join(os.path.dirname(__file__), 'Data.py'), 'r').read(), variables)
 
         self.__config = variables['config']
 

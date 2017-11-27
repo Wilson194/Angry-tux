@@ -10,6 +10,7 @@ class DumpEnemy(Enemy):
         self._state = DumpLiveState(self)
 
 
+    @property
     def collision_distance(self) -> float:
         return 40
 

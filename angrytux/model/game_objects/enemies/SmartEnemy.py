@@ -10,6 +10,7 @@ class SmartEnemy(Enemy):
         self._state = SmartLiveState(self)
 
 
+    @property
     def collision_distance(self) -> float:
         return 50.
 

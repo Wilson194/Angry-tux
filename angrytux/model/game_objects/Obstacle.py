@@ -17,6 +17,7 @@ class Obstacle(GameObject):
         self.__hit_points -= 1
 
 
+    @property
     def collision_distance(self) -> float:
         return 50.
 

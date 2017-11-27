@@ -10,6 +10,7 @@ class MovingEnemy(Enemy):
         self._state = MovingLiveState(self)
 
 
+    @property
     def collision_distance(self) -> float:
         return 50.
 

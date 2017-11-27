@@ -18,6 +18,7 @@ class Missile(GameObject):
         self.__state = Flying()
 
 
+    @property
     def collision_distance(self):
         return 1
 

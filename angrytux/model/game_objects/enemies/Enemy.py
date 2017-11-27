@@ -11,6 +11,7 @@ class Enemy(GameObject, ABC):
         super().__init__(position)
 
 
+    @property
     @abstractmethod
     def collision_distance(self):
         pass

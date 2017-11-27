@@ -19,13 +19,14 @@ class GameObject(IVisitable, ABC):
         self.__position = position
 
 
+    @property
     @abstractmethod
     def collision_distance(self):
         pass
 
 
     def has_collided_with(self, game_object) -> bool:
-        sum_collision_distance = self.collision_distance() + game_object.collision_distance()
+        sum_collision_distance = self.collision_distance + game_object.collision_distance
 
         distance = self.__position.compute_distance_from(game_object.position)
 
