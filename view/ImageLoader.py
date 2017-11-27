@@ -1,6 +1,8 @@
 import os
 import pygame
 
+from config.Config import Config
+
 IMAGES_PATH = os.path.join('resources', 'images')
 
 
@@ -85,3 +87,10 @@ class ImageLoader:
         image_name = 'tux_circle.png'
 
         return size, self.__return_cached('tux_small', image_name, size)
+
+
+    def get_background(self):
+        size = Config()['windows_size']
+        image_name = 'background.jpg'
+
+        return size, self.__return_cached('background', image_name, size)

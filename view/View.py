@@ -38,8 +38,10 @@ class View(IObserver, IVisitor):
 
 
     def object_change(self, subject):
+
+        self._draw_background()
         all_objects = self.__model.get_all_game_objects()
-        self.__screen.fill((255, 255, 255))
+        # self.__screen.fill((255, 255, 255))
         for obj in all_objects:
             obj.accept(self)
 
@@ -138,6 +140,13 @@ class View(IObserver, IVisitor):
     def _draw_gravity_value(self, gravity):
         text_surface = self.__big_font.render('Gravity: {:.2f}'.format(gravity), False, (0, 0, 0))
         self.__screen.blit(text_surface, (50, 10))
+
+
+    def _draw_background(self):
+        size, bg = self.__imageLoader.get_background()
+        bg.convert_alpha()
+
+        self.__screen.blit(bg, pygame.rect.Rect(0, 0, 500, 500))
 
 
 def rot_center(image, rect, angle):

@@ -10,7 +10,7 @@ from model.game_objects.enemies.enemy_states.HittedState import HittedState
 
 
 class SmartLiveState(EnemyState):
-    MOVE_TIME = 60 * 2
+    MOVE_TIME = 60 * 5
 
 
     def __init__(self, enemy):
