@@ -60,7 +60,7 @@ class Cannon(GameObject):
 
 
     def angle(self, angle):
-        if 80 > angle + self.shooting_angle > -110:
+        if 70 > angle + self.shooting_angle > -90:
             self.shooting_angle += angle
 
 
@@ -70,6 +70,11 @@ class Cannon(GameObject):
 
         elif isinstance(self.__state, DoubleShoot):
             self.__state = SingleShoot(self)
+
+
+    def move(self, angle, distance):
+        if 10 < self.position.y_position + (distance * -angle / 90) < Config()['windows_size'][1] - 100:
+            self.position.move(angle, distance)
 
 
     def __str__(self):

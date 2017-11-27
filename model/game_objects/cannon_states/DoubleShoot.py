@@ -12,8 +12,8 @@ class DoubleShoot(CannonState):
 
 
     def shoot(self):
-        x = self.__cannon.position.x_position + 100
-        y = self.__cannon.position.y_position + 27
+        x = self.__cannon.position.x_position + 105
+        y = self.__cannon.position.y_position + 55 - self.__cannon.shooting_angle
 
         pygame.mixer.Channel(0).play(pygame.mixer.Sound(os.path.join('resources', 'sounds', 'shoot.wav')))
         missile1 = CreationFactory().create_missile(Position(x, y), self.__cannon.strength, self.__cannon.shooting_angle - 20)

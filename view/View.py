@@ -45,6 +45,7 @@ class View(IObserver, IVisitor):
 
         self._draw_score(self.__model.score)
         self._draw_shoot_state(self.__model.cannon.state)
+        self._draw_gravity_value(self.__model.gravity)
 
         pygame.display.flip()
 
@@ -101,7 +102,7 @@ class View(IObserver, IVisitor):
         angle = canon.shooting_angle
 
         size, cannon_img = self.__imageLoader.get_cannon()
-        img, rect = rot_center(cannon_img, (x + 59, y + 75), angle)
+        img, rect = rot_center(cannon_img, (x + 59, y + 75), angle - 15)
         self.__screen.blit(img, rect)
 
         size, wheel_img = self.__imageLoader.get_wheel()
@@ -111,7 +112,7 @@ class View(IObserver, IVisitor):
 
 
     def _draw_strength_bar(self, strength):
-        p = ProgressBar(self.__screen, 200, 10, 150, 20, 'Strength', self.__font)
+        p = ProgressBar(self.__screen, 230, 10, 150, 20, 'Strength', self.__font)
         p.update(strength)
 
 
@@ -132,6 +133,11 @@ class View(IObserver, IVisitor):
         if state == 'DoubleShoot':
             self.__screen.blit(tux_img, (670, 10))
             self.__screen.blit(tux_img, (690, 10))
+
+
+    def _draw_gravity_value(self, gravity):
+        text_surface = self.__big_font.render('Gravity: {:.2f}'.format(gravity), False, (0, 0, 0))
+        self.__screen.blit(text_surface, (50, 10))
 
 
 def rot_center(image, rect, angle):

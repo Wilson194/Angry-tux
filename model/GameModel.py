@@ -145,7 +145,7 @@ class GameModel(SingletonInheritance):
         :param angle: angle of movement (90,-90)
         :param distance: distance of move
         """
-        self.__cannon.position.move(angle, distance)
+        self.__cannon.move(angle, distance)
         self.__change_notify()
 
 
