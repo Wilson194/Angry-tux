@@ -21,6 +21,11 @@ class SingleShoot(CannonState):
         return missile,
 
 
+    def change_state(self):
+        from angrytux.model.game_objects.cannon_states.DoubleShoot import DoubleShoot
+        self.__cannon.state = DoubleShoot(self.__cannon)
+
+
     def __eq__(self, other):
         if type(other) is str and other.lower() == 'singleshoot':
             return True

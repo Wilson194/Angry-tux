@@ -1,4 +1,5 @@
 from angrytux.config.Config import Config
+from angrytux.model.game_objects.cannon_states.CannonState import CannonState
 from .GameObject import GameObject
 from .Position import Position
 from .cannon_states.DoubleShoot import DoubleShoot
@@ -55,6 +56,11 @@ class Cannon(GameObject):
         return self.__state
 
 
+    @state.setter
+    def state(self, state: CannonState):
+        self.__state = state
+
+
     def accept(self, visitor):
         visitor.visit(self)
 
@@ -65,11 +71,7 @@ class Cannon(GameObject):
 
 
     def change_state(self):
-        if isinstance(self.__state, SingleShoot):
-            self.__state = DoubleShoot(self)
-
-        elif isinstance(self.__state, DoubleShoot):
-            self.__state = SingleShoot(self)
+        self.state.change_state()
 
 
     def move(self, angle, distance):
