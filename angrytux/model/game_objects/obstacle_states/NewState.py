@@ -10,5 +10,5 @@ class NewState(ObstacleState):
 
 
     def hit(self):
-        self._obstacle.got_hit()
+        self._obstacle.hit_points -= 1
         self._obstacle.state = HittedState(self._obstacle)

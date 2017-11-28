@@ -14,7 +14,7 @@ class Obstacle(GameObject):
 
 
     def got_hit(self):
-        self.__hit_points -= 1
+        self.__state.hit()
 
 
     @property
@@ -29,6 +29,11 @@ class Obstacle(GameObject):
     @property
     def hit_points(self):
         return self.__hit_points
+
+
+    @hit_points.setter
+    def hit_points(self, hit_points):
+        self.__hit_points = hit_points
 
 
     @property

@@ -10,7 +10,7 @@ class HittedState(ObstacleState):
 
 
     def hit(self):
-        self._obstacle.got_hit()
+        self._obstacle.hit_points -= 1
 
         if self._obstacle.hit_points == 0:
             self._obstacle.state = DestroyedState(self._obstacle)

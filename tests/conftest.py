@@ -1,5 +1,8 @@
 import pytest
 
+from angrytux.model.game_objects.Obstacle import Obstacle
+from angrytux.model.game_objects.Position import Position
+
 
 @pytest.fixture
 def utils():
@@ -9,6 +12,11 @@ def utils():
 @pytest.fixture
 def callable_class():
     return CallableClass()
+
+
+@pytest.fixture
+def obstacle():
+    return Obstacle(Position(50, 50))
 
 
 class Utils:
