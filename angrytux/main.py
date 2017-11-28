@@ -1,3 +1,4 @@
+import os
 import pygame
 from angrytux.config.Config import Config
 from angrytux.controller.Keyboard import Keyboard
@@ -7,6 +8,9 @@ from angrytux.model.abstract_facotry.CreationFactory import CreationFactory
 from angrytux.model.abstract_facotry.RealisticFactory import RealisticFactory
 
 from angrytux.view.View import View
+
+ROOT_DIR = os.path.dirname(__file__)
+RESOURCES_DIR = os.path.join(ROOT_DIR, 'resources')
 
 
 def run():

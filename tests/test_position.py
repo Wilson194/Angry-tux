@@ -18,17 +18,13 @@ def test_compute_distance(p1, p2, result):
                          [(0, (60, 50)),
                           (90, (50, 40)),
                           (-90, (50, 60)),
-                          (45, (57, 42))])
-def test_move_function(angle, result):
+                          (45, (57, 43))])
+def test_move_function(utils, angle, result):
     p1 = Position(50, 50)
 
     p1.move(angle, 10)
 
-    x, y = p1.to_rect()
-    x, y = int(x), int(y)
-    rect = (x, y)
-
-    assert rect == result
+    assert utils.compare_rounded_tuple(p1.to_rect(), result)
 
 
 @pytest.mark.parametrize(['position', 'result'],

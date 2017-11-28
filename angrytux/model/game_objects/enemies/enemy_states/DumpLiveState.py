@@ -1,9 +1,8 @@
 import os
-
 import pygame
 from angrytux.model.game_objects.enemies.enemy_states.HittedState import HittedState
-
 from angrytux.model.game_objects.enemies.enemy_states.EnemyState import EnemyState
+import angrytux.main
 
 
 class DumpLiveState(EnemyState):
@@ -21,7 +20,7 @@ class DumpLiveState(EnemyState):
 
 
     def hit(self):
-        pygame.mixer.Channel(1).play(pygame.mixer.Sound(os.path.join('angrytux', 'resources', 'sounds', 'blue_screen.wav')))
+        pygame.mixer.Channel(1).play(pygame.mixer.Sound(os.path.join(angrytux.main.RESOURCES_DIR, 'sounds', 'blue_screen.wav')))
 
         self._enemy.state = HittedState(self._enemy)
 
