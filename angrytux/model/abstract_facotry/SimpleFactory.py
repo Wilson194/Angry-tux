@@ -7,6 +7,16 @@ from angrytux.model.game_objects.missile_strategies.SimpleMove import SimpleMove
 
 
 class SimpleFactory(AbstractFactory):
+    """
+    Simple factory for creating enemies and missiles
+    Missiles:
+            - simple lowering angle
+
+    Smart enemy:
+            - dump enemy sitting at one place
+    Dummy enemy:
+            - dump enemy sitting at one place
+    """
     def __init__(self):
         self.__missile_strategy = SimpleMove()
 

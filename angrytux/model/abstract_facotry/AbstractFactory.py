@@ -32,4 +32,11 @@ class AbstractFactory(ABC):
 
     @abstractmethod
     def create_missile(self, position: Position, speed: float, movement_angle: float) -> Missile:
+        """
+        Create missile
+        :param position: position of missile
+        :param speed: initial speed
+        :param movement_angle: initial moving angle
+        :return: Missile object
+        """
         pass

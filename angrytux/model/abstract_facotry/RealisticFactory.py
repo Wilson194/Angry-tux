@@ -8,6 +8,19 @@ from angrytux.model.abstract_facotry.AbstractFactory import AbstractFactory
 
 
 class RealisticFactory(AbstractFactory):
+    """
+    Realistic factory for creating enemies and missiles
+    Missiles:
+            - moving based on gravity
+            - moving more like ballistic ellipse
+
+    Smart enemy:
+            - teleporting enemy based on time
+    Dummy enemy:
+            - moving enemy on line
+    """
+
+
     def __init__(self):
         self.__missile_strategy = GravityMove()
 
