@@ -3,7 +3,7 @@ import pytest
 import importlib
 
 
-@pytest.mark.parametrize('class_name', ('DumpEnemy', 'SmartEnemy', 'MovingEnemy'))
+@pytest.mark.parametrize('class_name', ('DummyEnemy', 'SmartEnemy', 'MovingEnemy'))
 def test_enemy_return_come_collision_distance(class_name):
     module_ = importlib.import_module('angrytux.model.game_objects.enemies.{}'.format(class_name))
     class_ = getattr(module_, class_name)
@@ -13,7 +13,7 @@ def test_enemy_return_come_collision_distance(class_name):
     assert enemy.collision_distance > 0
 
 
-@pytest.mark.parametrize('class_name', ('DumpEnemy', 'SmartEnemy', 'MovingEnemy'))
+@pytest.mark.parametrize('class_name', ('DummyEnemy', 'SmartEnemy', 'MovingEnemy'))
 def test_enemy_have_some_state(class_name):
     module_ = importlib.import_module('angrytux.model.game_objects.enemies.{}'.format(class_name))
     class_ = getattr(module_, class_name)

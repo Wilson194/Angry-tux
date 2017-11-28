@@ -14,9 +14,6 @@ def callable_class():
     return CallableClass()
 
 
-@pytest.fixture
-def obstacle():
-    return Obstacle(Position(50, 50))
 
 
 class Utils:
