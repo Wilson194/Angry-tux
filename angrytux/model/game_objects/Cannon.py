@@ -66,7 +66,7 @@ class Cannon(GameObject):
 
 
     def angle(self, angle):
-        if 70 > angle + self.shooting_angle > -90:
+        if Config()['max_shooting_angle'] > angle + self.shooting_angle > Config()['min_shooting_angle']:
             self.shooting_angle += angle
 
 
