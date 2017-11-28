@@ -6,9 +6,28 @@ from angrytux.model.game_objects.Position import Position
 
 
 class AbstractFactory(ABC):
+    """
+    Abstract class for factories
+    """
+
+
     @abstractmethod
-    def create_enemy(self):
+    def create_smart_enemy(self, position: Position):
+        """
+        Create some smart enemy
+        :param position: position of enemy
+        :return:
+        """
         pass
+
+
+    @abstractmethod
+    def create_dummy_enemy(self, position: Position):
+        """
+        Create some dummy enemy
+        :param position: position of enemy
+        :return:
+        """
 
 
     @abstractmethod

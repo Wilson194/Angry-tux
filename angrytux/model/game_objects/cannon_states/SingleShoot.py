@@ -26,6 +26,16 @@ class SingleShoot(CannonState):
         self.__cannon.state = DoubleShoot(self.__cannon)
 
 
+    @property
+    def points_multiple(self):
+        return 1
+
+
+    @property
+    def shoot_cost(self):
+        return 2
+
+
     def __eq__(self, other):
         if type(other) is str and other.lower() == 'singleshoot':
             return True

@@ -2,8 +2,9 @@ import os
 
 import pygame
 from angrytux.model.Levels.LevelCreator import LevelCreator
+from angrytux.model.abstract_facotry.CreationFactory import CreationFactory
 from angrytux.model.game_objects.Position import Position
-from angrytux.model.game_objects.enemies.DumpEnemy import DumpEnemy
+from angrytux.model.game_objects.enemies.DummyEnemy import DummyEnemy
 from angrytux.model.game_objects.enemies.MovingEnemy import MovingEnemy
 from angrytux.model.game_objects.enemies.SmartEnemy import SmartEnemy
 
@@ -22,13 +23,8 @@ class Level1Creator(LevelCreator):
     def create_enemies(self) -> list:
         enemies = []
 
-        # enemies.append(DumpEnemy(Position(400, 400)))
-        # enemies.append(DumpEnemy(Position(200, 150)))
-        # enemies.append(DumpEnemy(Position(600, 300)))
-        # enemies.append(DumpEnemy(Position(400, 700)))
-        enemies.append(DumpEnemy(Position(600, 500)))
-        enemies.append(SmartEnemy(Position(600, 350)))
-        enemies.append(MovingEnemy(Position(400, 400)))
+        enemies.append(CreationFactory().create_smart_enemy(Position(600, 350)))
+        enemies.append(CreationFactory().create_dummy_enemy(Position(400, 400)))
 
         return enemies
 

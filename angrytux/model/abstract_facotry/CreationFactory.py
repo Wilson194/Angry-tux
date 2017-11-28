@@ -3,6 +3,12 @@ from .AbstractFactory import AbstractFactory
 
 
 class CreationFactory(metaclass=Singleton):
+    """
+    Creating factory is singleton, which hold selected AbstractFactory
+    Just delegate functions to correct abstract factory
+    """
+
+
     def __init__(self, factory: AbstractFactory = None):
         self.__factory = factory
 

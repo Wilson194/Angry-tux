@@ -4,7 +4,7 @@ from angrytux.model.game_objects.enemies.enemy_states.DumpLiveState import DumpL
 from angrytux.model.game_objects.enemies.Enemy import Enemy
 
 
-class DumpEnemy(Enemy):
+class DummyEnemy(Enemy):
     def __init__(self, position: Position):
         super().__init__(position)
         self._state = DumpLiveState(self)

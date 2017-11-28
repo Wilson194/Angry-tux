@@ -5,7 +5,6 @@ from angrytux.model.ObjectsPackage import ObjectsPackage
 from angrytux.model.Observering.ChangeManager import ChangeManager
 from angrytux.model.Singleton import SingletonInheritance
 from angrytux.model.game_objects.Position import Position
-from angrytux.model.game_objects.enemies.DumpEnemy import DumpEnemy
 
 from angrytux.model.game_objects.Cannon import Cannon
 
@@ -37,8 +36,6 @@ class GameModel(SingletonInheritance):
         Create initial object in model
         """
         self.__cannon = Cannon(Position(0, 150))
-
-        self.__objects.add_enemy(DumpEnemy(Position(400, 400)))
 
         self.__objects.enemies = level_creator.create_enemies()
         self.__objects.obstacles = level_creator.create_obstacles()
@@ -88,7 +85,8 @@ class GameModel(SingletonInheritance):
         """
         for missile in self.__objects.missiles:
             points = missile.move(self.gravity, self.__objects.get_all_collidable_objects())
-            self.__score += points
+
+            self.__score += points * self.cannon.state.points_multiple
 
         if self.__objects.missiles:
             return True
@@ -163,7 +161,7 @@ class GameModel(SingletonInheritance):
         """
         Shoot missile from cannon
         """
-        self.__score -= 1
+        self.__score -= self.__cannon.state.shoot_cost
         missiles = self.__cannon.shoot()
 
         self.__objects.missiles.extend(missiles)
