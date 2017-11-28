@@ -5,15 +5,12 @@ from .Position import Position
 from .cannon_states.DoubleShoot import DoubleShoot
 from .cannon_states.SingleShoot import SingleShoot
 
-INITIAL_STRENGTH = 5
-INITIAL_SHOOTING_ANGLE = 0
-
 
 class Cannon(GameObject):
     def __init__(self, position: Position):
         super().__init__(position)
-        self.__shooting_angle = INITIAL_SHOOTING_ANGLE
-        self.__strength = INITIAL_STRENGTH
+        self.__shooting_angle = Config()['cannon_initial_shooting_angle']
+        self.__strength = Config()['cannon_initial_strength']
         self.__state = SingleShoot(self)
 
 
@@ -34,10 +31,10 @@ class Cannon(GameObject):
 
     @strength.setter
     def strength(self, value):
-        if value < Config()['min_strength']:
-            self.__strength = Config()['min_strength']
-        elif value > Config()['max_strength']:
-            self.__strength = Config()['max_strength']
+        if value < Config()['cannon_min_strength']:
+            self.__strength = Config()['cannon_min_strength']
+        elif value > Config()['cannon_max_strength']:
+            self.__strength = Config()['cannon_max_strength']
         else:
             self.__strength = value
 
