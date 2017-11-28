@@ -2,6 +2,11 @@ from angrytux.controller.Commands.Command import Command
 
 
 class GravityUpCommand(Command):
+    """
+    Command for increase game gravity
+    """
+
+
     def __init__(self, proxy):
         super().__init__()
         self.__proxy = proxy

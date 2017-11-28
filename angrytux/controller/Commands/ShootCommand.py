@@ -3,7 +3,7 @@ from angrytux.controller.Commands.Command import Command
 
 class ShootCommand(Command):
     """
-    Command for cannon move up
+    Command for cannon shoot
     """
 
 

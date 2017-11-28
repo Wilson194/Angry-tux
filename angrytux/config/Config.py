@@ -4,6 +4,12 @@ from angrytux.model.Singleton import Singleton
 
 
 class Config(metaclass=Singleton):
+    """
+    Class for global game config
+    Has getitem from getting variables
+    """
+
+
     def __init__(self):
         variables = {}
         exec(open(os.path.join(os.path.dirname(__file__), 'Data.py'), 'r').read(), variables)

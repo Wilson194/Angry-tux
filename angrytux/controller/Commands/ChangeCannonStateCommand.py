@@ -2,6 +2,11 @@ from .Command import Command
 
 
 class ChangeCannonStateCommand(Command):
+    """
+    Command for change state of cannon
+    """
+
+
     @property
     def create_memento(self):
         return False

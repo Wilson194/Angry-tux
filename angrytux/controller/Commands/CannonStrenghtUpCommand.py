@@ -2,6 +2,11 @@ from angrytux.controller.Commands.Command import Command
 
 
 class CannonStrengthUpCommand(Command):
+    """
+    Command for increase cannon shoot strength
+    """
+
+
     @property
     def create_memento(self):
         return False

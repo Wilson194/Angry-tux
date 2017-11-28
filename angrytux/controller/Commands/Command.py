@@ -12,12 +12,19 @@ class Command(ABC):
 
 
     @property
-    def memento(self):
+    def memento(self) -> object:
+        """
+        Memento object getter
+        """
         return self.__memento
 
 
     @memento.setter
     def memento(self, memento):
+        """
+        Setter for memento save
+        :param memento: memento object
+        """
         self.__memento = memento
 
 
@@ -25,7 +32,6 @@ class Command(ABC):
     def execute(self):
         """
         Execute command (do what command should do)
-        :return:
         """
         pass
 
@@ -33,17 +39,18 @@ class Command(ABC):
     @abstractmethod
     def undo(self):
         """
-        Undo command (use memento for undo operation)
-        :return:
+        Undo command (use memento or just operatio for undo operation)
         """
         pass
 
 
     @property
     @abstractmethod
-    def create_memento(self):
+    def create_memento(self) -> bool:
         """
-        Property, yes if create a memento, no otherwise
-        :return:
+        Property for determinate, if create memento
+        True -> create memento after command
+        False -> don't create memento after command
+        :return: True/False
         """
         pass

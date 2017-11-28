@@ -3,7 +3,7 @@ from angrytux.controller.Commands.Command import Command
 
 class CannonAngleDownCommand(Command):
     """
-    Command for cannon move down
+    Command for lower cannon shooting angle
     """
 
 

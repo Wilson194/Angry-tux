@@ -7,8 +7,8 @@ MAX_PROGRESS = 100
 
 
 def rescale(number: float) -> float:
-    result = (((MAX_PROGRESS - MIN_PROGRESS) * (number - Config()['min_strength'])) / (
-        Config()['max_strength'] - Config()['min_strength'])) + MIN_PROGRESS
+    result = (((MAX_PROGRESS - MIN_PROGRESS) * (number - Config()['cannon_min_strength'])) / (
+        Config()['cannon_max_strength'] - Config()['cannon_min_strength'])) + MIN_PROGRESS
 
     return result
 

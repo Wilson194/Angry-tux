@@ -87,4 +87,8 @@ class Keyboard(metaclass=Singleton):
 
 
     def _add_command(self, command):
+        """
+        Add command to model queue
+        :param command: created command
+        """
         self.__proxy.add_command(command)

@@ -6,7 +6,7 @@ from angrytux.model.Observering.IObserver import IObserver
 from angrytux.model.Visitor.IVisitor import IVisitor
 from angrytux.model.game_objects.Missile import Missile
 from angrytux.model.game_objects.Obstacle import Obstacle
-from angrytux.model.game_objects.enemies.DumpEnemy import DumpEnemy
+from angrytux.model.game_objects.enemies.DummyEnemy import DummyEnemy
 from angrytux.model.game_objects.enemies.Enemy import Enemy
 from angrytux.model.game_objects.enemies.MovingEnemy import MovingEnemy
 from angrytux.model.game_objects.enemies.SmartEnemy import SmartEnemy
@@ -86,7 +86,7 @@ class View(IObserver, IVisitor):
         if isinstance(enemy.state, HittedState):
             size, img = self.__imageLoader.get_blue_dead()
         else:
-            if isinstance(enemy, DumpEnemy):
+            if isinstance(enemy, DummyEnemy):
                 size, img = self.__imageLoader.get_vista()
             if isinstance(enemy, SmartEnemy):
                 size, img = self.__imageLoader.get_win_10()
