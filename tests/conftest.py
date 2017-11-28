@@ -20,6 +20,14 @@ class Utils:
         return True
 
 
+    def compare_classes(self, class1, class2):
+        name1 = type(class1).__name__
+
+        name2 = type(class2).__name__
+
+        return name1 == name2
+
+
 class CallableClass:
     def __call__(self, *args, **kwargs):
         return self
