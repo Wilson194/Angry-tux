@@ -1,7 +1,7 @@
 from angrytux.model.abstract_facotry.AbstractFactory import AbstractFactory
 from angrytux.model.game_objects.Missile import Missile
 from angrytux.model.game_objects.Position import Position
-from angrytux.model.game_objects.enemies.DumpEnemy import DumpEnemy
+from angrytux.model.game_objects.enemies.DummyEnemy import DummyEnemy
 
 from angrytux.model.game_objects.missile_strategies.SimpleMove import SimpleMove
 
@@ -27,10 +27,10 @@ class SimpleFactory(AbstractFactory):
 
 
     def create_smart_enemy(self, position: Position):
-        enemy = DumpEnemy(position)
+        enemy = DummyEnemy(position)
         return enemy
 
 
     def create_dummy_enemy(self, position: Position):
-        enemy = DumpEnemy(position)
+        enemy = DummyEnemy(position)
         return enemy

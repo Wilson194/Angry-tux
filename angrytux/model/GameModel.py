@@ -83,6 +83,7 @@ class GameModel(SingletonInheritance):
         Move all missiles
         :return: True if some missile move, False otherwise
         """
+
         for missile in self.__objects.missiles:
             points = missile.move(self.gravity, self.__objects.get_all_collidable_objects())
 
@@ -97,7 +98,7 @@ class GameModel(SingletonInheritance):
     def __act_enemies(self) -> bool:
         change = False
         for enemy in self.__objects.enemies:
-            change = change or enemy.state.move()
+            change = enemy.state.move() or change
 
         return change
 
