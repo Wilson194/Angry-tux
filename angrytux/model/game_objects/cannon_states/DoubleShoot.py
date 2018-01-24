@@ -12,7 +12,11 @@ class DoubleShoot(CannonState):
         self.__cannon = cannon
 
 
-    def shoot(self):
+    def shoot(self) -> tuple:
+        """
+        Shoot two missiles from cannon. Each another angle
+        :return: tuple of two missiles
+        """
         x = self.__cannon.position.x_position + 105
         y = self.__cannon.position.y_position + 55 - self.__cannon.shooting_angle
 
@@ -23,18 +27,29 @@ class DoubleShoot(CannonState):
         return missile1, missile2
 
 
-    def change_state(self):
+    def change_state(self) -> None:
+        """
+        Change state from double shoot to single shoot
+        """
         from angrytux.model.game_objects.cannon_states.SingleShoot import SingleShoot
         self.__cannon.state = SingleShoot(self.__cannon)
 
 
     @property
-    def points_multiple(self):
+    def points_multiple(self) -> int:
+        """
+        Number of score multiple when this mode is enable
+        :return: for double shoot is 2
+        """
         return 2
 
 
     @property
-    def shoot_cost(self):
+    def shoot_cost(self) -> int:
+        """
+        Number of points that cost one shoot
+        :return: for double shoot is 3
+        """
         return 3
 
 

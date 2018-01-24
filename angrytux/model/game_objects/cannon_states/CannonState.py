@@ -17,7 +17,7 @@ class CannonState(ABC):
 
 
     @abstractmethod
-    def change_state(self):
+    def change_state(self) -> None:
         """
         Change state of cannon
         :return: None
