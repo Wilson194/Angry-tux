@@ -12,9 +12,17 @@ class MovingEnemy(Enemy):
 
     @property
     def collision_distance(self) -> float:
+        """
+        Collision distance for DummyEnemy because of size of image
+        :return: 50 for this image
+        """
         return 50.
 
 
     @property
-    def points(self):
+    def points(self) -> int:
+        """
+        Points for destroying this enemy
+        :return: 30 point for this enemy
+        """
         return 30

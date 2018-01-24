@@ -18,21 +18,37 @@ class Enemy(GameObject, ABC):
 
     @property
     @abstractmethod
-    def collision_distance(self):
+    def collision_distance(self) -> float:
+        """
+        Value of this object, collide with another object
+        :return:
+        """
         pass
 
 
     @property
-    def state(self):
+    def state(self) -> EnemyState:
+        """
+        Get state of enemy
+        :return: current state of enemy
+        """
         return self._state
 
 
     @state.setter
-    def state(self, state: EnemyState):
+    def state(self, state: EnemyState) -> None:
+        """
+        Set new state for enemy
+        :param state: new enemy state
+        """
         self._state = state
 
 
-    def accept(self, visitor):
+    def accept(self, visitor) -> None:
+        """
+        Method for visitor pattern. Accept the visitor
+        :param visitor: actual visitor object
+        """
         visitor.visit(self)
 
 
