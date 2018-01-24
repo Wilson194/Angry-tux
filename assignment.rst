@@ -14,9 +14,9 @@ Technical requirements
 * game will be programed in Python at least version 3.4.*
 * game must be standalone package
 * package must have all requirements for building as package
-* package must be uploaded to PyPi (test version or productive)
+* package must be uploaded to PyPi (test version or production)
 * project must be versioned in Git system (GitHub, GitLab, etc.)
-* project must be connected with some CI system and must have automatic testing (fro example Travis CI)
+* project must be connected with some CI system and must have automatic testing (for example Travis CI)
 * whole code must meet PEP8 conventions
 * whole code must use english naming and english comments
 * commits should be atomics changes (not whole project in one commit)
