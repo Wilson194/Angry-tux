@@ -10,9 +10,18 @@ from angrytux.model.game_objects.Cannon import Cannon
 
 
 class GameModel(SingletonInheritance):
+    """
+    Based class for game model.
+    Hold structure for whole game
+    """
     GRAVITY = 9.81
 
     class Memento:
+        """
+        Inner class for memento of GameModel
+        """
+
+
         def __init__(self, pack):
             self.__pack = pack
 
@@ -46,6 +55,10 @@ class GameModel(SingletonInheritance):
 
 
     def create_memento(self) -> Memento:
+        """
+        Create new memento of current state of GameModel
+        :return: memento of actual state
+        """
         pack = self.__objects.create_pack()
         memento = GameModel.Memento(pack)
 
@@ -53,6 +66,10 @@ class GameModel(SingletonInheritance):
 
 
     def load_memento(self, memento: Memento) -> None:
+        """
+        Change state of GameModel based on memento
+        :param memento: memento with GameModel state
+        """
         pack = memento._Memento__pack
 
         self.__objects.set_pack(pack)
@@ -96,6 +113,10 @@ class GameModel(SingletonInheritance):
 
 
     def __act_enemies(self) -> bool:
+        """
+        Call move on all enemies in GameModel
+        :return: True if something change, False otherwise
+        """
         change = False
         for enemy in self.__objects.enemies:
             change = enemy.state.move() or change
@@ -168,35 +189,56 @@ class GameModel(SingletonInheritance):
         self.__objects.missiles.extend(missiles)
 
 
-    def change_cannon_state(self):
+    def change_cannon_state(self) -> None:
         """
         Change cannon state
         """
         self.__cannon.change_state()
 
 
-    def change_strength(self, strength: float):
+    def change_strength(self, strength: float) -> None:
+        """
+        Change strength of cannon shoot
+        :param strength: add this value to strength
+        """
         self.__cannon.strength += strength
 
         self.__change_notify()
 
 
     @property
-    def score(self):
+    def score(self) -> int:
+        """
+        Getter of game score
+        :return: value of score
+        """
         return self.__score
 
 
     @property
-    def cannon(self):
+    def cannon(self) -> Cannon:
+        """
+        Getter of cannon object
+        :return: cannon object
+        """
         return self.__cannon
 
 
     @property
-    def gravity(self):
+    def gravity(self) -> float:
+        """
+        Getter of actual value of gravity
+        :return: value of gravity
+        """
         return self.__gravity
 
 
-    def change_gravity(self, gravity: float):
+    def change_gravity(self, gravity: float) -> None:
+        """
+        Change value of gravity. Restriction 2 < new_value <
+        :param gravity:
+        :return:
+        """
         self.__gravity += gravity
 
         if self.__gravity < 2:

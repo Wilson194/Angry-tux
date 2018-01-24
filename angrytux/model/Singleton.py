@@ -14,6 +14,9 @@ class Singleton(type):
 
 
 class SingletonInheritance(object):
+    """
+    Class for creating singleton using inheritance
+    """
     _instance = None
 
 
