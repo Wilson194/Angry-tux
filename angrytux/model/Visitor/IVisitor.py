@@ -8,7 +8,17 @@ from angrytux.model.game_objects.Cannon import Cannon
 
 
 class IVisitor(ABC):
+    """
+    Abstract interface for visitor pattern
+    """
+
+
     def visit(self, visited_object):
+        """
+        Determinate visit function called
+        :param visited_object:
+        :return:
+        """
         if str(visited_object) == 'Cannon':
             self._visit_cannon(visited_object)
         elif str(visited_object) == 'Missile':
@@ -21,19 +31,35 @@ class IVisitor(ABC):
 
     @abstractmethod
     def _visit_cannon(self, canon: Cannon):
+        """
+        Visit cannon object
+        :param canon: Cannon object
+        """
         pass
 
 
     @abstractmethod
     def _visit_missile(self, missile: Missile):
+        """
+        Visit missile object
+        :param missile: Missile object
+        """
         pass
 
 
     @abstractmethod
     def _visit_enemy(self, enemy: Enemy):
+        """
+        Visit enemy object
+        :param enemy: Enemy object
+        """
         pass
 
 
     @abstractmethod
     def _visit_obstacle(self, obstacle: Obstacle):
+        """
+        Visit obstacle object
+        :param obstacle: Obstacle object
+        """
         pass
