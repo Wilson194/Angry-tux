@@ -9,7 +9,16 @@ from angrytux.model.game_objects.Obstacle import Obstacle
 
 
 class Level1Creator(LevelCreator):
+    """
+    Level creator for level 1
+    """
+
+
     def create_obstacles(self) -> list:
+        """
+        Create all obstacles for level 1
+        :return: list of obstacles
+        """
         obstacles = []
 
         obstacles.append(Obstacle(Position(400, 400)))
@@ -21,6 +30,10 @@ class Level1Creator(LevelCreator):
 
 
     def create_enemies(self) -> list:
+        """
+        Create all enemies for level 1
+        :return: list of enemies
+        """
         enemies = []
 
         enemies.append(CreationFactory().create_dummy_enemy(Position(420, 400)))
@@ -35,7 +48,10 @@ class Level1Creator(LevelCreator):
         return enemies
 
 
-    def music(self):
+    def music(self) -> None:
+        """
+        Linux music for level 1
+        """
         file = os.path.join('angrytux', 'resources', 'sounds', 'song1.mp3')
         pygame.mixer.music.load(file)
         pygame.mixer.music.play()
