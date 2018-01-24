@@ -8,11 +8,10 @@ class MissileStrategy(ABC):
 
 
     @abstractmethod
-    def move(self, missile, gravity: float):
+    def move(self, missile, gravity: float) -> None:
         """
         Move missile in one tick
-        :param missile:
-        :param gravity:
-        :return:
+        :param missile: Missile object
+        :param gravity: actual value of gravity
         """
         pass
