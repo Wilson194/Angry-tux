@@ -14,6 +14,10 @@ class MovingLiveState(EnemyState):
 
 
     def move(self) -> bool:
+        """
+        Move enemy across the screen down and up
+        :return: True
+        """
         x, y = self._enemy.position.to_rect()
 
         # y += self.__operator
@@ -31,12 +35,20 @@ class MovingLiveState(EnemyState):
         return False
 
 
-    def hit(self):
-        pygame.mixer.Channel(1).play(pygame.mixer.Sound(os.path.join('angrytux','resources', 'sounds', 'blue_screen.wav')))
+    def hit(self) -> None:
+        """
+        Method for hit this enemy (what to do when hitted)
+        Play sound and change state
+        """
+        pygame.mixer.Channel(1).play(pygame.mixer.Sound(os.path.join('angrytux', 'resources', 'sounds', 'blue_screen.wav')))
 
         self._enemy.state = HittedState(self._enemy)
 
 
     @property
     def collidable(self) -> bool:
+        """
+        Determinate if this object could collied with missile
+        :return: True if collide, False otherwise
+        """
         return True

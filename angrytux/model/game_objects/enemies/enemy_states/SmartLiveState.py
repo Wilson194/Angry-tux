@@ -21,6 +21,10 @@ class SmartLiveState(EnemyState):
 
 
     def move(self) -> bool:
+        """
+        Change position to random new position if timer hit the clock
+        :return: True if changed, False otherwise
+        """
         self.__time -= 1
 
         if self.__time == 0:
@@ -37,7 +41,11 @@ class SmartLiveState(EnemyState):
         return False
 
 
-    def hit(self):
+    def hit(self) -> None:
+        """
+        Method for hit this enemy (what to do when hitted)
+        Play sound and change state
+        """
         pygame.mixer.Channel(1).play(pygame.mixer.Sound(os.path.join('angrytux', 'resources', 'sounds', 'blue_screen.wav')))
 
         self._enemy.state = HittedState(self._enemy)
@@ -45,6 +53,10 @@ class SmartLiveState(EnemyState):
 
     @property
     def collidable(self) -> bool:
+        """
+            Determinate if this object could collied with missile
+            :return: True if collide, False otherwise
+            """
         return True
 
 

@@ -22,10 +22,9 @@ class EnemyState(ABC):
 
 
     @abstractmethod
-    def hit(self):
+    def hit(self) -> None:
         """
         Method for hit this enemy (what to do when hitted)
-        :return:
         """
         pass
 

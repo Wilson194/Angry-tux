@@ -11,6 +11,10 @@ class HittedState(EnemyState):
 
 
     def move(self) -> bool:
+        """
+        By the timer, change state and move or don't move
+        :return: True if change state, False otherwise
+        """
         self.live_time -= 1
 
         if self.live_time == 0:
@@ -20,7 +24,11 @@ class HittedState(EnemyState):
         return False
 
 
-    def hit(self):
+    def hit(self) -> None:
+        """
+        Method for hit this enemy (what to do when hitted)
+        Do nothing
+        """
         pass
 
 
@@ -31,4 +39,8 @@ class HittedState(EnemyState):
 
     @property
     def collidable(self) -> bool:
+        """
+        Determinate if this object could collied with missile
+        :return: True if collide, False otherwise
+        """
         return False
