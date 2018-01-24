@@ -35,6 +35,7 @@ class Utils:
 
 class CallableClass:
     def __call__(self, *args, **kwargs):
+        print('Called sound: ', args)
         return self
 
 

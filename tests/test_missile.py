@@ -3,7 +3,7 @@ import pytest
 
 from angrytux.model.game_objects.Missile import Missile
 from angrytux.model.game_objects.Position import Position
-from angrytux.model.game_objects.enemies.DumpEnemy import DumpEnemy
+from angrytux.model.game_objects.enemies.DummyEnemy import DummyEnemy
 from angrytux.model.game_objects.enemies.enemy_states.HittedState import HittedState
 from angrytux.model.game_objects.missile_states.Collided import Collided
 from angrytux.model.game_objects.missile_states.OutOfGame import OutOfGame
@@ -27,7 +27,7 @@ def test_missile_collision_with_enemy(monkeypatch, callable_class):
 
     missile = Missile(Position(50, 50), 10, 0, SimpleMove())
 
-    enemy = DumpEnemy(Position(50, 50))
+    enemy = DummyEnemy(Position(50, 50))
 
     points = missile.move(10, [enemy])
 

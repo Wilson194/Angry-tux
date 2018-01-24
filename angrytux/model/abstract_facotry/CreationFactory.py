@@ -14,7 +14,11 @@ class CreationFactory(metaclass=Singleton):
 
 
     @property
-    def factory(self):
+    def factory(self) -> AbstractFactory:
+        """
+        Getter for selected factory
+        :return: Specific factory
+        """
         return self.__factory
 
 
