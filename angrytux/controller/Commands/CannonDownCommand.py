@@ -8,7 +8,7 @@ class CannonDownCommand(Command):
 
 
     @property
-    def create_memento(self):
+    def create_memento(self) -> bool:
         return False
 
 

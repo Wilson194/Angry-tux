@@ -8,22 +8,22 @@ class CannonUpCommand(Command):
 
 
     @property
-    def create_memento(self):
+    def create_memento(self) -> bool:
         return False
 
 
-    def __init__(self, proxy):
+    def __init__(self, proxy) -> None:
         super().__init__()
         self.__proxy = proxy
 
 
-    def undo(self):
+    def undo(self) -> None:
         self.__proxy.move_cannon(-90, 5)
 
 
-    def execute(self):
+    def execute(self) -> None:
         self.__proxy.move_cannon(90, 5)
 
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return '<Command> Cannon move up'

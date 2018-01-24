@@ -8,17 +8,17 @@ class QuitCommand(Command):
 
 
     @property
-    def create_memento(self):
+    def create_memento(self) -> bool:
         return False
 
 
-    def undo(self):
+    def undo(self) -> None:
         pass
 
 
-    def execute(self):
+    def execute(self) -> None:
         quit(3)
 
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return '<Command> Quit application'

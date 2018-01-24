@@ -20,7 +20,7 @@ class Command(ABC):
 
 
     @memento.setter
-    def memento(self, memento):
+    def memento(self, memento: object) -> None:
         """
         Setter for memento save
         :param memento: memento object
@@ -29,7 +29,7 @@ class Command(ABC):
 
 
     @abstractmethod
-    def execute(self):
+    def execute(self) -> None:
         """
         Execute command (do what command should do)
         """
@@ -37,7 +37,7 @@ class Command(ABC):
 
 
     @abstractmethod
-    def undo(self):
+    def undo(self) -> None:
         """
         Undo command (use memento or just operatio for undo operation)
         """

@@ -7,6 +7,7 @@ class Config(metaclass=Singleton):
     """
     Class for global game config
     Has getitem from getting variables
+    Singleton class
     """
 
 

@@ -9,6 +9,7 @@ from angrytux.controller.Commands.GravityUpCommand import GravityUpCommand
 from angrytux.controller.Commands.QuitCommand import QuitCommand
 from angrytux.controller.Commands.ShootCommand import ShootCommand
 from angrytux.controller.Commands.UndoCommand import UndoCommand
+from angrytux.controller.Commands.Command import Command
 from angrytux.model.Singleton import Singleton
 from angrytux.proxy.Proxy import Proxy
 
@@ -18,18 +19,19 @@ from .Commands.ChangeCannonStateCommand import ChangeCannonStateCommand
 
 class Keyboard(metaclass=Singleton):
     """
-    Keyboard controller
+    Keyboard controller, this class control all actions from user
+    Singleton class
     """
 
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.__proxy = Proxy()
 
 
-    def tick(self):
+    def tick(self) -> int:
         """
         Parse all keyboard events
-        :return:
+        :return: 1 if everything is OK
         """
 
         for event in pygame.event.get():
@@ -86,7 +88,7 @@ class Keyboard(metaclass=Singleton):
         return 1
 
 
-    def _add_command(self, command):
+    def _add_command(self, command: Command) -> None:
         """
         Add command to model queue
         :param command: created command

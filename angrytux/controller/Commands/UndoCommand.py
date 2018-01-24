@@ -7,14 +7,14 @@ class UndoCommand(Command):
     """
 
 
-    def execute(self):
+    def execute(self) -> None:
         pass
 
 
-    def undo(self):
+    def undo(self) -> None:
         pass
 
 
     @property
-    def create_memento(self):
+    def create_memento(self) -> bool:
         return False

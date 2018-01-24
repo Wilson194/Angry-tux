@@ -8,7 +8,7 @@ class CannonStrengthUpCommand(Command):
 
 
     @property
-    def create_memento(self):
+    def create_memento(self) -> bool:
         return False
 
 
@@ -17,13 +17,13 @@ class CannonStrengthUpCommand(Command):
         self.__proxy = proxy
 
 
-    def execute(self):
+    def execute(self) -> None:
         self.__proxy.change_strength(0.3)
 
 
-    def undo(self):
+    def undo(self) -> None:
         self.__proxy.change_strength(-0.3)
 
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return "<Command> Cannon strength up"
