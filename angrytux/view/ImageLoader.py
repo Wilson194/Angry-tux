@@ -7,7 +7,13 @@ from angrytux.config.Config import Config
 IMAGES_PATH = os.path.join('angrytux', 'resources', 'images')
 
 
-def load_image(image, size):
+def load_image(image: str, size: tuple):
+    """
+    Function for load an image
+    :param image: image name
+    :param size: size of image
+    :return: loaded and resized image object
+    """
     tux = pygame.image.load(os.path.join(IMAGES_PATH, image))
     tux = pygame.transform.scale(tux, size)
 
@@ -15,11 +21,23 @@ def load_image(image, size):
 
 
 class ImageLoader:
+    """
+    Class for loading images
+    """
+
+
     def __init__(self):
         self.__loaded = {}
 
 
-    def __return_cached(self, name, image_name, size):
+    def __return_cached(self, name: str, image_name: str, size: tuple):
+        """
+        Return imaged and try to load that from cache
+        :param name: name of cache
+        :param image_name: name of file
+        :param size: tuple size of image
+        :return: image object
+        """
         if name not in self.__loaded:
             image = load_image(image_name, size)
             self.__loaded[name] = image

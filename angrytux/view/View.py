@@ -6,6 +6,7 @@ from angrytux.model.Observering.IObserver import IObserver
 from angrytux.model.Visitor.IVisitor import IVisitor
 from angrytux.model.game_objects.Missile import Missile
 from angrytux.model.game_objects.Obstacle import Obstacle
+from angrytux.model.game_objects.cannon_states.CannonState import CannonState
 from angrytux.model.game_objects.enemies.DummyEnemy import DummyEnemy
 from angrytux.model.game_objects.enemies.Enemy import Enemy
 from angrytux.model.game_objects.enemies.MovingEnemy import MovingEnemy
@@ -37,7 +38,11 @@ class View(IObserver, IVisitor):
         self.__big_font = pygame.font.SysFont("comicsansms", 30)
 
 
-    def object_change(self, subject):
+    def object_change(self, subject) -> None:
+        """
+        Redraw all items in game
+        :param subject: subject of observer pattern
+        """
 
         self._draw_background()
         all_objects = self.__model.get_all_game_objects()
@@ -66,7 +71,11 @@ class View(IObserver, IVisitor):
         pygame.display.update()
 
 
-    def _visit_obstacle(self, obstacle: Obstacle):
+    def _visit_obstacle(self, obstacle: Obstacle) -> None:
+        """
+        Visit object for visitor pattern
+        :param obstacle: obstacle object
+        """
         size, tux_img = self.__imageLoader.get_wall()
         x = obstacle.position.x_position - size[0] / 2
         y = obstacle.position.y_position - size[1] / 2
@@ -74,7 +83,11 @@ class View(IObserver, IVisitor):
         self.__screen.blit(tux_img, (x, y))
 
 
-    def _visit_missile(self, missile: Missile):
+    def _visit_missile(self, missile: Missile) -> None:
+        """
+        Visit missile for visitor pattern
+        :param missile: missile object
+        """
         size, tux_img = self.__imageLoader.get_tux()
         x = missile.position.x_position - size[0] / 2
         y = missile.position.y_position - size[1] / 2
@@ -82,7 +95,11 @@ class View(IObserver, IVisitor):
         self.__screen.blit(tux_img, (x, y))
 
 
-    def _visit_enemy(self, enemy: Enemy):
+    def _visit_enemy(self, enemy: Enemy) -> None:
+        """
+        Visit enemy for visitor pattern
+        :param enemy: enemy object
+        """
         if isinstance(enemy.state, HittedState):
             size, img = self.__imageLoader.get_blue_dead()
         else:
@@ -98,7 +115,11 @@ class View(IObserver, IVisitor):
         self.__screen.blit(img, (x, y))
 
 
-    def _visit_cannon(self, canon: Cannon):
+    def _visit_cannon(self, canon: Cannon) -> None:
+        """
+        Visit cannon for visitor pattern
+        :param canon: cannon object
+        """
         x = canon.position.x_position
         y = canon.position.y_position
         angle = canon.shooting_angle
@@ -113,17 +134,29 @@ class View(IObserver, IVisitor):
         self._draw_strength_bar(canon.strength)
 
 
-    def _draw_strength_bar(self, strength):
+    def _draw_strength_bar(self, strength: float) -> None:
+        """
+        Draw strength bar at top of window
+        :param strength: value of strength
+        """
         p = ProgressBar(self.__screen, 230, 10, 150, 20, 'Strength', self.__font)
         p.update(strength)
 
 
-    def _draw_score(self, score):
+    def _draw_score(self, score: int) -> None:
+        """
+        Draw score text at top of windows
+        :param score: actual score value
+        """
         text_surface = self.__big_font.render('Score: {}'.format(score), False, (0, 0, 0))
         self.__screen.blit(text_surface, (400, 10))
 
 
-    def _draw_shoot_state(self, state):
+    def _draw_shoot_state(self, state: CannonState) -> None:
+        """
+        Draw shoot state (one or two tux at top of windows
+        :param state: State of cannon
+        """
         size, tux_img = self.__imageLoader.get_tux_small()
         text_surface = self.__big_font.render('Shoot: ', False, (0, 0, 0))
 
@@ -137,20 +170,33 @@ class View(IObserver, IVisitor):
             self.__screen.blit(tux_img, (690, 10))
 
 
-    def _draw_gravity_value(self, gravity):
+    def _draw_gravity_value(self, gravity: float) -> None:
+        """
+        Draw gravity value, text at top window
+        :param gravity: current gravity value
+        """
         text_surface = self.__big_font.render('Gravity: {:.2f}'.format(gravity), False, (0, 0, 0))
         self.__screen.blit(text_surface, (50, 10))
 
 
-    def _draw_background(self):
+    def _draw_background(self) -> None:
+        """
+        Draw background of game
+        """
         size, bg = self.__imageLoader.get_background()
         bg.convert_alpha()
 
         self.__screen.blit(bg, pygame.rect.Rect(0, 0, 500, 500))
 
 
-def rot_center(image, rect, angle):
-    """rotate an image while keeping its center"""
+def rot_center(image, rect: tuple, angle: float) -> tuple:
+    """
+    rotate an image while keeping its center
+    :param image: image object for rotating
+    :param rect: current position rectangle
+    :param angle: rotation angle
+    :return: tuple of image and rectangle objects
+    """
     rot_image = pygame.transform.rotate(image, angle)
     rot_rect = rot_image.get_rect(center=rect)
     return rot_image, rot_rect

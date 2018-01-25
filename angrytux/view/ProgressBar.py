@@ -7,6 +7,11 @@ MAX_PROGRESS = 100
 
 
 def rescale(number: float) -> float:
+    """
+    Rescale size of progress bar
+    :param number:
+    :return:
+    """
     result = (((MAX_PROGRESS - MIN_PROGRESS) * (number - Config()['cannon_min_strength'])) / (
         Config()['cannon_max_strength'] - Config()['cannon_min_strength'])) + MIN_PROGRESS
 
@@ -14,6 +19,11 @@ def rescale(number: float) -> float:
 
 
 class ProgressBar:
+    """
+    Class for progress bar
+    """
+
+
     def __init__(self, screen, x, y, bar_width, bar_height, name, font):
         self.screen = screen
         self.color = (102, 170, 255)
@@ -31,7 +41,11 @@ class ProgressBar:
         self.bar = pygame.Surface((self.width, self.height))
 
 
-    def update(self, value):
+    def update(self, value: float) -> None:
+        """
+        Update size of bar
+        :param value: value of bar in percentage
+        """
         percent = rescale(value)
         pygame.draw.rect(self.bar, self.color, (0, 0, self.width, self.height), 2)
         self.bar = pygame.Surface(((percent * self.width) / 100, self.height))
@@ -43,9 +57,17 @@ class ProgressBar:
         self.screen.blit(self.bar_space, (self.x, self.y))
 
 
-    def set_color(self, color):
+    def set_color(self, color) -> None:
+        """
+        Set color of bar
+        :param color: color of progress bar
+        """
         self.color = color
 
 
-    def set_alpha(self, alpha):
+    def set_alpha(self, alpha: float) -> None:
+        """
+        Set alpha of progress bar
+        :param alpha: value of alpha
+        """
         self.bar.set_alpha(alpha)
