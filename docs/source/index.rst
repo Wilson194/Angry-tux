@@ -7,8 +7,15 @@ Welcome to AngryTux's documentation!
 ====================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
+
+   how_to_install.rst
+   running_the_game.rst
+   game_control.rst
+   game_objects.rst
+   level_builder.rst
+   modules.rst
 
 
 
