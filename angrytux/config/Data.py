@@ -6,5 +6,5 @@ config = {
     'min_shooting_angle': -90,
     'max_shooting_angle': 70,
     'cannon_initial_shooting_angle': 0,
-    'cannon_initial_strength': 5
+    'cannon_initial_strength': 5,
 }

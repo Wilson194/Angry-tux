@@ -16,6 +16,7 @@ class Config(metaclass=Singleton):
         exec(open(os.path.join(os.path.dirname(__file__), 'Data.py'), 'r').read(), variables)
 
         self.__config = variables['config']
+        self.__config['root_dir'] = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
 
     def __getitem__(self, item):

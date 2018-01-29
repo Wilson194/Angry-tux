@@ -4,7 +4,7 @@ import pygame
 
 from angrytux.config.Config import Config
 
-IMAGES_PATH = os.path.join('angrytux', 'resources', 'images')
+IMAGES_PATH = os.path.join(Config()['root_dir'], 'resources', 'images')
 
 
 def load_image(image: str, size: tuple):

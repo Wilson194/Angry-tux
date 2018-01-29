@@ -1,6 +1,8 @@
 import os
 
 import pygame
+
+from angrytux.config.Config import Config
 from angrytux.model.Levels.LevelCreator import LevelCreator
 from angrytux.model.abstract_facotry.CreationFactory import CreationFactory
 from angrytux.model.game_objects.Position import Position
@@ -52,6 +54,7 @@ class Level1Creator(LevelCreator):
         """
         Linux music for level 1
         """
-        file = os.path.join('angrytux', 'resources', 'sounds', 'song1.mp3')
+        root_dir = Config()['root_dir']
+        file = os.path.join(root_dir, 'resources', 'sounds', 'song1.mp3')
         pygame.mixer.music.load(file)
         pygame.mixer.music.play()
