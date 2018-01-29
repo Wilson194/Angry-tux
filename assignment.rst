@@ -47,7 +47,7 @@ Game requirements
 * game must have some levels (levels of UI, levels of game, ...) and this levels should be easily added
 * all games elements and text should be in english.
 * game must use some software design patterns (at least 3), for example Singleton, MVC, observer, visitor and so on
-* game should have some sound effects or musicw1w
+* game should have some sound effects or music
 * game should support some more possibilities than only shoot from one position
 * game should use some graphic (not only lines and squares)
 
