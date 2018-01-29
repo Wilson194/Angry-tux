@@ -1,6 +1,10 @@
 Angry Tux game
 ===============
 
+.. image:: https://travis-ci.com/Wilson194/Angry-tux.svg?token=PdLqtPfyXNo5KfhxbzAS&branch=master
+    :target: https://travis-ci.com/Wilson194/Angry-tux
+
+
 Simple game for linux lovers and Windows haters. If you have some free time you can destroy some windows and
 they will donate you with awesome blue screen of death. That is amazing!
 
