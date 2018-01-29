@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open('README.rst') as f:
     long_description = ''.join(f.readlines())
@@ -12,10 +12,14 @@ setup(
     author_email='horacj10@fit.cvut.cz',
     license='Public Domain',
     url='https://github.com/Wilson194/Angry-tux',
-    packages=['angrytux'],
+    packages=find_packages(),
+    package_data={
+        '': ['*.png', '*.jpg', '*.wav', '*.mp3'],
+    },
     entry_points={
         'console_scripts': [
             'angrytux = angrytux.main:run',
+            'AngryTux = angrytux.main:run',
         ],
     },
     install_requires=['pygame'],
