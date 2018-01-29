@@ -27,31 +27,31 @@ Control
 ------
 
 .. image:: angrytux/resources/images/letter_f.png
-    :scale: 40%
+    :scale: 5%
 
 
 .. image:: angrytux/resources/images/letter_g.png
-    :scale: 40%
+    :scale: 5%
 
 
 .. image:: angrytux/resources/images/letter_o.png
-    :scale: 40%
+    :scale: 5%
 
 
 .. image:: angrytux/resources/images/letter_p.png
-    :scale: 40%
+    :scale: 5%
 
 
 .. image:: angrytux/resources/images/letter_c.png
-    :scale: 40%
+    :scale: 5%
 
 
 .. image:: angrytux/resources/images/letter_u.png
-    :scale: 40%
+    :scale: 5%
 
 
 .. image:: angrytux/resources/images/space_key_m.png
-    :scale: 40%
+    :scale: 5%
 
 
 Level creator
