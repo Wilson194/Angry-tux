@@ -8,6 +8,9 @@ they will donate you with awesome blue screen of death. That is amazing!
 Description
 ------------
 
+Simple game develop because of school project at FIT CTU at Prague. If you have free time, you can shoot some Windows millenium
+for no reason. Just because you want.
+
 How to run the game
 --------------------
 
@@ -16,39 +19,43 @@ you can start playing. User control are describe in next part.
 
 You can chose level to play with option ``-l /level_number/``. In default there are only 2 levels, but you can create your own.
 
-Second option what you can chose is creation factory. This change behaviour of whole game and enemies. There are two types of
-facotries:
+Second option what you can chose is creation factory. This change behaviour of whole game and enemies.
+You can chose factory with ``-f /factory/`` There are two types of factories:
 
 * simple - simple mode, enemies just stay at one place and moving of missiles is really simple
 * realistic - realistic mode, enemies are smart (moving and teleporting) and missiles using ballistic curve for moving
 
 
 Control
-------
+---------
 
-+-----------+-----------------------------------------------+
-| ^ (up)    | Move cannon up                                |
-+-----------+-----------------------------------------------+
-| v (down)  | Move cannon down                              |
-+-----------+-----------------------------------------------+
-| < (left)  | Angle cannon up                               |
-+-----------+-----------------------------------------------+
-| > (right) | Angle cannon down                             |
-+-----------+-----------------------------------------------+
-| **f**     | Increase value of gravity                     |
-+-----------+-----------------------------------------------+
-| **g**     | Decrease value of gravity                     |
-+-----------+-----------------------------------------------+
-| **o**     | Decrease value of shooting strength           |
-+-----------+-----------------------------------------------+
-| **p**     | Increase value of shooting strength           |
-+-----------+-----------------------------------------------+
-| **c**     | Change shooting state (single shoot / double shoot) |
-+-----------+-----------------------------------------------+
-| **u**     | Undo command (undo previous command)          |
-+-----------+-----------------------------------------------+
-| **s**     | Shoot missile                                 |
-+-----------+-----------------------------------------------+
++-----------+-------------------------------------------------------+
+| ^ (up)    | Move cannon up                                        |
++-----------+-------------------------------------------------------+
+| v (down)  | Move cannon down                                      |
++-----------+-------------------------------------------------------+
+| < (left)  | Angle cannon up                                       |
++-----------+-------------------------------------------------------+
+| > (right) | Angle cannon down                                     |
++-----------+-------------------------------------------------------+
+| **f**     | Increase value of gravity                             |
++-----------+-------------------------------------------------------+
+| **g**     | Decrease value of gravity                             |
++-----------+-------------------------------------------------------+
+| **o**     | Decrease value of shooting strength                   |
++-----------+-------------------------------------------------------+
+| **p**     | Increase value of shooting strength                   |
++-----------+-------------------------------------------------------+
+| **c**     | Change shooting state (single shoot / double shoot)   |
++-----------+-------------------------------------------------------+
+| **u**     | Undo command (undo previous command)                  |
++-----------+-------------------------------------------------------+
+| **s**     | Shoot missile                                         |
++-----------+-------------------------------------------------------+
+
 
 Level creator
 --------------
+
+You can create your own level for this game. In code you can find abstract class ``LevelCreator``. If you extend this class,
+you can create your own levels. If you want to find more, just look into documentation.
