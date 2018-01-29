@@ -26,33 +26,28 @@ facotries:
 Control
 ------
 
-.. image:: angrytux/resources/images/letter_f.png
-    :scale: 5%
-
-
-.. image:: angrytux/resources/images/letter_g.png
-    :scale: 5%
-
-
-.. image:: angrytux/resources/images/letter_o.png
-    :scale: 5%
-
-
-.. image:: angrytux/resources/images/letter_p.png
-    :scale: 5%
-
-
-.. image:: angrytux/resources/images/letter_c.png
-    :scale: 5%
-
-
-.. image:: angrytux/resources/images/letter_u.png
-    :scale: 5%
-
-
-.. image:: angrytux/resources/images/space_key_m.png
-    :scale: 5%
-
++-------------------------------------------------------+
+| .. image:: angrytux/resources/images/letter_f.png     |
+|     :height: 40px                                     |
++-------------------------------------------------------+
+| .. image:: angrytux/resources/images/letter_g.png     |
+|     :height: 40px                                     |
++-------------------------------------------------------+
+| .. image:: angrytux/resources/images/letter_o.png     |
+|     :height: 40px                                     |
++-------------------------------------------------------+
+| .. image:: angrytux/resources/images/letter_p.png     |
+|     :height: 40px                                     |
++-------------------------------------------------------+
+| .. image:: angrytux/resources/images/letter_c.png     |
+|     :height: 40px                                     |
++-------------------------------------------------------+
+| .. image:: angrytux/resources/images/letter_u.png     |
+|     :height: 40px                                     |
++-------------------------------------------------------+
+| .. image:: angrytux/resources/images/space_key_m.png  |
+|     :height: 40px                                     |
++-------------------------------------------------------+
 
 Level creator
 --------------
