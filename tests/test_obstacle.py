@@ -37,3 +37,7 @@ def test_obstacle_change_state_after_hit(obstacle, utils):
     obstacle.got_hit()
 
     assert utils.compare_classes(obstacle.state, HittedState(obstacle))
+
+
+def test_obstacle_collision_distance_not_null(obstacle):
+    assert obstacle.collision_distance != 0

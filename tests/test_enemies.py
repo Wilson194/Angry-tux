@@ -21,3 +21,5 @@ def test_enemy_have_some_state(class_name):
     enemy = class_(Position(50, 50))
 
     assert enemy.state is not None
+
+

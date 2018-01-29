@@ -1,8 +1,5 @@
 import pytest
 
-from angrytux.model.game_objects.Obstacle import Obstacle
-from angrytux.model.game_objects.Position import Position
-
 
 @pytest.fixture
 def utils():
@@ -12,8 +9,6 @@ def utils():
 @pytest.fixture
 def callable_class():
     return CallableClass()
-
-
 
 
 class Utils:
@@ -35,7 +30,7 @@ class Utils:
 
 class CallableClass:
     def __call__(self, *args, **kwargs):
-        print('Called sound: ', args)
+        # print('Called sound: ', args)
         return self
 
 

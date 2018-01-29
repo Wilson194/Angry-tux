@@ -2,9 +2,9 @@ import pygame
 import pytest
 
 from angrytux.model.game_objects.Missile import Missile
+from angrytux.model.game_objects.Obstacle import Obstacle
 from angrytux.model.game_objects.Position import Position
 from angrytux.model.game_objects.enemies.DummyEnemy import DummyEnemy
-from angrytux.model.game_objects.enemies.enemy_states.HittedState import HittedState
 from angrytux.model.game_objects.missile_states.Collided import Collided
 from angrytux.model.game_objects.missile_states.OutOfGame import OutOfGame
 from angrytux.model.game_objects.missile_strategies.SimpleMove import SimpleMove
@@ -23,6 +23,7 @@ def test_missile_basic_movement_without_collision(utils, angle, result):
 
 
 def test_missile_collision_with_enemy(monkeypatch, callable_class):
+    from angrytux.model.game_objects.enemies.enemy_states.HittedState import HittedState
     monkeypatch.setattr(pygame, 'mixer', callable_class)
 
     missile = Missile(Position(50, 50), 10, 0, SimpleMove())
@@ -33,6 +34,19 @@ def test_missile_collision_with_enemy(monkeypatch, callable_class):
 
     assert points == 10
     assert isinstance(enemy.state, HittedState)
+    assert isinstance(missile.state, Collided)
+
+
+def test_missile_collision_with_obstacle():
+    from angrytux.model.game_objects.obstacle_states.HittedState import HittedState
+    missile = Missile(Position(50, 50), 10, 0, SimpleMove())
+
+    obstacle = Obstacle(Position(50, 50))
+
+    points = missile.move(10, [obstacle])
+
+    assert points == 0
+    assert isinstance(obstacle.state, HittedState)
     assert isinstance(missile.state, Collided)
 
 

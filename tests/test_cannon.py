@@ -42,7 +42,7 @@ def test_cannon_single_shoot_create_one_missile(monkeypatch, callable_class):
     assert missile.speed == cannon.strength
 
 
-def test_cannon_double_shoot_create_twi_missile(monkeypatch, callable_class):
+def test_cannon_double_shoot_create_two_missile(monkeypatch, callable_class):
     CreationFactory(RealisticFactory())
     monkeypatch.setattr(pygame, 'mixer', callable_class)
     cannon = Cannon(Position(50, 50))
@@ -58,12 +58,18 @@ def test_cannon_double_shoot_create_twi_missile(monkeypatch, callable_class):
     assert missile1.movement_angle != missile2.movement_angle
 
 
-def test_strength_setter_max_and_min_values():
+def test_strength_setter_max_value():
     cannon = Cannon(Position(50, 50))
 
     assert cannon.strength == Config()['cannon_initial_strength']
-    cannon.strength = 55
+    cannon.strength = Config()['cannon_max_strength'] + 20
     assert cannon.strength == Config()['cannon_max_strength']
+
+
+def test_strength_setter_min_value():
+    cannon = Cannon(Position(50, 50))
+
+    assert cannon.strength == Config()['cannon_initial_strength']
     cannon.strength = 0
     assert cannon.strength == Config()['cannon_min_strength']
 

@@ -36,3 +36,10 @@ def test_position_out_of_window(position, result):
     position = Position(*position)
 
     assert position.out_of_window() == result
+
+
+@pytest.mark.parametrize('position', [(50, 50), (0, 0), (150, 10)])
+def test_position_to_rect_conversion(position):
+    position_obj = Position(*position)
+
+    assert position_obj.to_rect() == position
