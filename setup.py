@@ -23,4 +23,7 @@ setup(
         ],
     },
     install_requires=['pygame'],
+    setup_requires=['pytest-runner'],
+    tests_require=['pytest'],
+    test_suite="tests",
 )
