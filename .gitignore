@@ -3,3 +3,5 @@ __venv__
 __pycache__
 Angry_Tux.egg-info
 dist
+/docs/build/
+.cache

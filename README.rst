@@ -5,6 +5,11 @@ Angry Tux game
     :target: https://travis-ci.com/Wilson194/Angry-tux
 
 
+.. image:: https://readthedocs.org/projects/angry-tux/badge/?version=latest
+    :target: http://angry-tux.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+
+
 Simple game for linux lovers and Windows haters. If you have some free time you can destroy some windows and
 they will donate you with awesome blue screen of death. That is amazing!
 
