@@ -16,7 +16,7 @@ class Proxy(metaclass=Singleton):
 
         def __call__(self, *args, **kwargs):
             if len(args) > 0:
-                print(str(args[0]))
+                print(' '.join([str(arg) for arg in args]))
             getattr(self.__model, self.__method)(*args, **kwargs)
 
     def __init__(self):
