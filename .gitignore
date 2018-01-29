@@ -1,3 +1,5 @@
 __venv__
 .idea
 __pycache__
+Angry_Tux.egg-info
+dist
