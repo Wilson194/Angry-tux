@@ -26,19 +26,33 @@ facotries:
 Control
 ------
 
-.. image:: resources/images/letter_f.png
+.. image:: angrytux/resources/images/letter_f.png
+    :scale: 40%
 
-.. image:: resources/images/letter_g.png
 
-.. image:: resources/images/letter_o.png
+.. image:: angrytux/resources/images/letter_g.png
+    :scale: 40%
 
-.. image:: resources/images/letter_p.png
 
-.. image:: resources/images/letter_c.png
+.. image:: angrytux/resources/images/letter_o.png
+    :scale: 40%
 
-.. image:: resources/images/letter_u.png
 
-.. image:: resources/images/space_key_m.png
+.. image:: angrytux/resources/images/letter_p.png
+    :scale: 40%
+
+
+.. image:: angrytux/resources/images/letter_c.png
+    :scale: 40%
+
+
+.. image:: angrytux/resources/images/letter_u.png
+    :scale: 40%
+
+
+.. image:: angrytux/resources/images/space_key_m.png
+    :scale: 40%
+
 
 Level creator
 --------------
