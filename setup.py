@@ -4,8 +4,8 @@ with open('README.rst') as f:
     long_description = ''.join(f.readlines())
 
 setup(
-    name='Angry Tux',
-    version='1.0',
+    name='AngryTux',
+    version='1.1',
     description='Simple game for linux users and windows haters.',
     long_description=long_description,
     author='Jan Horáček',

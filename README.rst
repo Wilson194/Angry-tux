@@ -63,6 +63,17 @@ Control
 +-----------+-------------------------------------------------------+
 
 
+Documentation
+--------------
+
+You can find documentation at page .. _ReadTheDocs: http://angry-tux.readthedocs.io/en/latest/
+
+
+Pypi
+------
+
+You can install game from test .. _PyPi: https://test.pypi.org/project/AngryTux/
+
 Level creator
 --------------
 
