@@ -20,7 +20,7 @@ Pip install
 
 #. Create virtual environment for the game: ``python -m venv __venv__``
 #. Activate virtual environment: ``. __venv__/bin/activate``
-#. Install game from pip: ``pip install Agry-tux``
+#. Install game from pip: ``python -m pip install --extra-index-url https://test.pypi.org/pypi AngryTux``
 
 
 
