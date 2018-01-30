@@ -22,6 +22,17 @@ setup(
             'AngryTux = angrytux.main:run',
         ],
     },
+    classifiers=[
+        'Framework :: Pytest',
+        'Framework :: Sphinx',
+        'Natural Language :: English',
+        'Operating System :: Microsoft :: Windows',
+        'Operating System :: Unix',
+        'Programming Language :: Python :: 3.5',
+        'Topic :: Games/Entertainment',
+        'Topic :: Games/Entertainment :: Arcade',
+        'Topic :: Software Development :: Libraries :: pygame'
+    ],
     install_requires=['pygame'],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
